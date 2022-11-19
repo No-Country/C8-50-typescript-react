@@ -41,7 +41,7 @@ const RegisterForm = (): any => {
         </button>
         <img className="img-logo" src={logo} alt="logo-inmobiliaria" />
         <h1 className="title-registro" > Registro </h1>
-        <form className="Form" onSubmit={onSubmit} >
+        <form className="Form" onSubmit ={ onSubmit} >
           <div className="container-input" >
             <label htmlFor="nombreInput">Nombre</label>
             <input {...register("name", {
