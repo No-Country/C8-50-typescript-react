@@ -1,35 +1,33 @@
-import express from 'express'
-import morgan from 'morgan'
-import cors from 'cors'
-import { UserRouter } from './routes/user.router'
-import { ConfigServer } from './config/config'
+import { DataSource } from 'typeorm'
+import { App } from './app'
+import { PostgresDataSource } from './db'
 
-class Server extends ConfigServer{
-    public app: express.Application = express()
+class Server extends App{
+
     private port: number = this.getNumberEnv("PORT")
 
     constructor() {
         super()
-        this.app.use(express.json())
-        this.app.use(express.urlencoded({ extended: true }))
-        this.app.use(morgan('dev'))
-        this.app.use(cors())
-
-        this.app.use('/api', this.routes())
-
-        this.listen()
+        this.serverConnection()
     }
 
-    routes(): Array<express.Router> {
-        return [new UserRouter().router]
-    }
-
-    public listen() {
-        this.app.listen(this.port, () => {
-            console.log(`Server is listening on port ${this.port}`)
-        })
-    }
-
+    async serverConnection(): Promise<DataSource | void> {
+        return PostgresDataSource.initialize()
+          .then(() => {
+            console.log("Database successfully connected!!");
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+          .then(() => {
+              this.app.listen(this.port, () => {
+                  console.log(`Server is listening on port ${this.port}`)
+              })
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
 }
 
 new Server()

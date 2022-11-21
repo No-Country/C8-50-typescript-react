@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 
-export abstract class ConfigServer {
+export abstract class Config {
+
   constructor() {
     const nodeNameEnv = this.createPathEnv(this.nodeEnv);
     dotenv.config({
@@ -21,7 +22,7 @@ export abstract class ConfigServer {
   }
 
   public createPathEnv(path: string): string {
-    const arrEnv: Array<string> = ["env"]; //['hola', 'mundo'] => 'hola.mundo'
+    const arrEnv: Array<string> = ["env"];
 
     if (path.length > 0) {
       const stringToArray = path.split(".");

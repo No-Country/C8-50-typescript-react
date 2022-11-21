@@ -23,9 +23,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConfigServer = void 0;
+exports.Config = void 0;
 const dotenv = __importStar(require("dotenv"));
-class ConfigServer {
+class Config {
     constructor() {
         const nodeNameEnv = this.createPathEnv(this.nodeEnv);
         dotenv.config({
@@ -43,7 +43,7 @@ class ConfigServer {
         return ((_a = this.getEnvironment("NODE_ENV")) === null || _a === void 0 ? void 0 : _a.trim()) || "";
     }
     createPathEnv(path) {
-        const arrEnv = ["env"]; //['hola', 'mundo'] => 'hola.mundo'
+        const arrEnv = ["env"];
         if (path.length > 0) {
             const stringToArray = path.split(".");
             arrEnv.unshift(...stringToArray);
@@ -51,4 +51,4 @@ class ConfigServer {
         return "." + arrEnv.join(".");
     }
 }
-exports.ConfigServer = ConfigServer;
+exports.Config = Config;
