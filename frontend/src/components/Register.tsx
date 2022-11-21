@@ -1,5 +1,5 @@
 
-import { useForm } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form"
 import logo from "../assets/img/logo.png"
 import { useState } from "react"
 import {
@@ -31,26 +31,29 @@ interface userForm {
 
 
 
-const RegisterForm = (): any => {
+const RegisterForm = ():  JSX.Element => {
 
 
 
+  const [isVisiblePassword, setIsvisiblePassword] = useState(false)
+  const viewPassword = (): void => {
+    setIsvisiblePassword(!isVisiblePassword)
+  }
 
 
 
   const { handleSubmit, register, formState: { errors }, reset } = useForm<userForm>()
-  const onSubmit = handleSubmit((data: userForm) => {
-    console.log(data);
+
+
+ 
+  const Submit: SubmitHandler<userForm> = (data) => {
+     console.log(data);
     reset({
       name: "",
       email: "",
       password: "",
       confirmPassword: ""
     })
-  })
-  const [isVisiblePassword, setIsvisiblePassword] = useState(false)
-  const viewPassword = (): void => {
-    setIsvisiblePassword(!isVisiblePassword)
   }
 
 
@@ -62,7 +65,7 @@ const RegisterForm = (): any => {
         </Close>
         <ImgLogo src={logo} alt="logo-inmobiliaria" />
         <TitleRegistro  > Registro </TitleRegistro>
-        <Form onSubmit={() => onSubmit} >
+        <Form onSubmit={ handleSubmit(Submit)} >
           <Containerinput  >
             <LabelInput htmlFor="nombreInput">Nombre</LabelInput>
             <InputForm {...register("name", {

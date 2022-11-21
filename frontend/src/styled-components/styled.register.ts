@@ -30,7 +30,8 @@ width: 330px;
 export const TitleRegistro = styled.h1`
   text-align: center;
   color: #45484a;
-  font-size: 1.9rem;`
+  font-size: 1.9rem;
+	margin: 0;`
 
 export const LabelInput = styled.label`
 font-size: .9rem`
@@ -70,7 +71,9 @@ padding-left: 10px;
 
 export const CambioLogin = styled.p`
 text-align: center;
-font-size: .9rem;`
+font-size: .9rem;
+margin: 0;
+`
 
 export const SpanCambio = styled.span`
 color: #3d4cd7;
@@ -83,6 +86,7 @@ font-weight: bold;
 export const ErrorInput = styled.p`
 font-size: .8rem;
 color: red;
+margin: 0;
 `
 
 export const ButtonRegister = styled.button`
