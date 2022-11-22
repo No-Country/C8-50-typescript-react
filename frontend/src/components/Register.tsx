@@ -1,5 +1,5 @@
 
-import { useForm, SubmitHandler } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import logo from "../assets/img/logo.png"
 import { useState } from "react"
 import {
@@ -31,7 +31,7 @@ interface userForm {
 
 
 
-const RegisterForm = ():  JSX.Element => {
+const RegisterForm = (): JSX.Element => {
 
 
 
@@ -42,12 +42,12 @@ const RegisterForm = ():  JSX.Element => {
 
 
 
-  const { handleSubmit, register, formState: { errors }, reset } = useForm<userForm>()
+  const { handleSubmit, register, formState: { errors }, reset, getValues } = useForm<userForm>()
 
 
- 
-  const Submit: SubmitHandler<userForm> = (data) => {
-     console.log(data);
+
+  const Submit: SubmitHandler<userForm> = (data: userForm) => {
+    console.log(data);
     reset({
       name: "",
       email: "",
@@ -65,7 +65,7 @@ const RegisterForm = ():  JSX.Element => {
         </Close>
         <ImgLogo src={logo} alt="logo-inmobiliaria" />
         <TitleRegistro  > Registro </TitleRegistro>
-        <Form onSubmit={ handleSubmit(Submit)} >
+        <Form onSubmit={handleSubmit(Submit)}  >
           <Containerinput  >
             <LabelInput htmlFor="nombreInput">Nombre</LabelInput>
             <InputForm {...register("name", {
@@ -94,8 +94,9 @@ const RegisterForm = ():  JSX.Element => {
           </Containerinput>
           <Containerinput  >
             <LabelInput htmlFor="ConfirmpasswordInput">Confirmar contraseña</LabelInput>
-            <InputForm {...register("confirmPassword", { required: true })} type={isVisiblePassword ? "text" : "password"} id="ConfirmpasswordInput" placeholder="***********" />
+            <InputForm {...register("confirmPassword", { required: true, validate: value => value === getValues("password") })} type={isVisiblePassword ? "text" : "password"} id="ConfirmpasswordInput" placeholder="***********" />
             {errors.confirmPassword?.type === "required" && <ErrorInput  > Necesitas confirmar tu contraseña </ErrorInput>}
+            {errors.confirmPassword?.type === "validate" && <ErrorInput  > La contraseñas no coinciden </ErrorInput>}
           </Containerinput>
           <ButtonRegister type="submit" > Register </ButtonRegister>
         </Form>
