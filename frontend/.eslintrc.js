@@ -4,6 +4,7 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
+	
 	extends: [
 		'react-app',
 		'eslint:recommended',
@@ -27,5 +28,12 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 	},
 	plugins: ['react', 'import', 'jsx-a11y'],
-	rules: {},
+	rules: {
+		"@typescript-eslint/no-misused-promises": [
+			"error",
+			{
+				"checksVoidReturn": false
+			}
+		]
+	},
 };
