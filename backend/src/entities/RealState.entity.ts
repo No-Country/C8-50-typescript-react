@@ -5,20 +5,12 @@ import { BaseEntity } from '../config/base.entity'
 export class RealState extends BaseEntity {
 
     @Column()
-    firstName: string
+    location: string
 
     @Column()
-    lastName: string
+    price: number
 
     @Column()
-    email: string
+    description: Text
 
-    @Column()
-    telephone: string
-
-    @Column()
-    password: string
-
-    @Column()
-    img: string
 }
