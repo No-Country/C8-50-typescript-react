@@ -23,6 +23,7 @@ export class User extends BaseEntity {
     @Column()
     img: string
 
+
     @OneToMany(()=>RealState, (realstate)=>realstate.user)
     realstate: RealState[]
 }
