@@ -1,4 +1,5 @@
-import { Entity, Column } from "typeorm"
+import { RealState } from './RealState.entity';
+import { Entity, Column, OneToMany } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 
 @Entity()
@@ -21,4 +22,7 @@ export class User extends BaseEntity {
 
     @Column()
     img: string
+
+    @OneToMany(()=>RealState, (realstate)=>realstate.user)
+    realstate: RealState[]
 }
