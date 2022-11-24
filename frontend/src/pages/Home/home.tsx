@@ -1,3 +1,9 @@
+import HomeSearch from '../../components/HomeSearch/HomeSearch';
 export default function Home(): any {
-	return <h1>Pagina inicio</h1>;
+	return (
+		<>
+			Pagina inicio
+			<HomeSearch />
+		</>
+	);
 }
