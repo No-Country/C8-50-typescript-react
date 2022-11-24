@@ -27,5 +27,12 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 	},
 	plugins: ['react', 'import', 'jsx-a11y'],
-	rules: {},
+	rules: {
+		'@typescript-eslint/no-misused-promises': [
+			'error',
+			{
+				checksVoidReturn: false,
+			},
+		],
+	},
 };
