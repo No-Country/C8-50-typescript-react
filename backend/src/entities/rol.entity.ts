@@ -1,5 +1,6 @@
-import { Entity, Column} from "typeorm";
+import { Entity, Column, OneToMany} from "typeorm";
 import { BaseEntity } from "../config/base.entity";
+import { User } from "./User.entity";
 
 @Entity()
 export class Rol extends BaseEntity{
@@ -8,5 +9,7 @@ export class Rol extends BaseEntity{
 
     @Column()
     descripcion: string;
-
+    
+    @OneToMany(()=> User, (users)=> users.roleId)
+    users: User[]
 }

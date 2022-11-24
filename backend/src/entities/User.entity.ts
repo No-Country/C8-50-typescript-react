@@ -21,4 +21,7 @@ export class User extends BaseEntity {
 
     @Column()
     img: string
+
+    @Column()
+    roleId: string
 }
