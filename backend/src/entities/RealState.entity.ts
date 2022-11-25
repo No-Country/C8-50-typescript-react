@@ -12,7 +12,7 @@ export class RealState extends BaseEntity {
     price: number
 
     @Column()
-    description: Text
+    description: string
 
     @ManyToOne(()=>User, (user)=>user.realstate)
     @JoinColumn({name:"owner_id"})
