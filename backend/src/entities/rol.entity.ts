@@ -9,7 +9,7 @@ export class Rol extends BaseEntity{
 
     @Column()
     descripcion: string;
-    
-    @OneToMany(()=> User, (users)=> users.roleId)
-    users: User[]
+
+    @OneToMany(() => User, (user) => user.rol)
+    user: User[]
 }

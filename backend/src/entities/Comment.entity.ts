@@ -23,6 +23,5 @@ export class Comment extends BaseEntity {
     @JoinColumn({name:"user_id"})
     user:User
 
-
-
 }
+
