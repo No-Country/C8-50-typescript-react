@@ -5,7 +5,7 @@ export const ContainerCards = styled.div`
 	grid-template-columns: repeat(1, 320px);
 	row-gap: 3.5rem;
 	justify-content: center;
-
+	margin-top: 5rem;
 	@media screen and (min-width: 711px) {
 		grid-template-columns: repeat(2, 320px);
 		gap: 2.5rem;

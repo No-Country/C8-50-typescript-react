@@ -30,7 +30,7 @@ interface userForm {
 
 
 
-const RegisterForm = (): JSX.Element => {
+const RegisterForm = (): any => {
 
 
 
