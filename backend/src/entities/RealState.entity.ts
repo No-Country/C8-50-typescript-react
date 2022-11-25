@@ -1,5 +1,7 @@
+import { Comment } from './Comment.entity';
+import { Visit } from './Visit.entity';
 import { User } from './User.entity';
-import { Entity, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm"
+import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 import { Call } from './Call.entity';
 
@@ -16,8 +18,14 @@ export class RealState extends BaseEntity {
     description: string
 
     @ManyToOne(()=>User, (user)=>user.realstate)
-    @JoinColumn({name:"owner_id"})
+    @JoinColumn({name: "owner_id"})
     user: User
+    
+    @OneToMany(()=>Visit, (visit)=>visit.realstate)
+    visit: Visit[]
+
+    @OneToMany(()=>Comment, (commet)=>commet.realstate)
+    comment: Comment[]
 
     @OneToMany(()=>Call, (call)=>call.realstate)
     call: Call[]

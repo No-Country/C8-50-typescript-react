@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import logo from "../assets/img/logo.png"
+import logo from "../../assets/img/logo.png"
 import {
   ContainerCard,
   Card,
@@ -17,7 +17,7 @@ import {
   ButtonLogin,
   ViewButton,
   MaterialSymbolsoutlined
-} from "../styled-components/styled.login"
+} from "../../styled-components/styles.forms/styled.login"
 
 interface loginForm{
   email: string
