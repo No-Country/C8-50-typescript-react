@@ -1,3 +1,4 @@
+import { Comment } from './Comment.entity';
 import { Visit } from './Visit.entity';
 import { User } from './User.entity';
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm"
@@ -21,5 +22,8 @@ export class RealState extends BaseEntity {
     
     @OneToMany(()=>Visit, (visit)=>visit.realstate)
     visit: Visit[]
+
+    @OneToMany(()=>Comment, (commet)=>commet.realstate)
+    comment: Comment[]
 
 }
