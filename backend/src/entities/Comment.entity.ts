@@ -1,13 +1,13 @@
 import { Visit } from './Visit.entity';
 import { User } from './User.entity';
-import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm"
+import { Entity, Column, ManyToOne, JoinColumn,OneToMany } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 
 @Entity()
-export class RealState extends BaseEntity {
+export class Comment extends BaseEntity {
 
     @Column()
-    location: string
+    comment: string
 
     @Column()
     price: number
@@ -16,7 +16,7 @@ export class RealState extends BaseEntity {
     description: string
 
     @ManyToOne(()=>User, (user)=>user.realstate)
-    @JoinColumn({name: "owner_id"})
+    @JoinColumn({name:"owner_id"})
     user: User
     
     @OneToMany(()=>Visit, (visit)=>visit.realstate)
