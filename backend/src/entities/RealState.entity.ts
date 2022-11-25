@@ -3,6 +3,7 @@ import { Visit } from './Visit.entity';
 import { User } from './User.entity';
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
+import { Call } from './Call.entity';
 
 @Entity()
 export class RealState extends BaseEntity {
@@ -25,5 +26,8 @@ export class RealState extends BaseEntity {
 
     @OneToMany(()=>Comment, (commet)=>commet.realstate)
     comment: Comment[]
+
+    @OneToMany(()=>Call, (call)=>call.realstate)
+    call: Call[]
 
 }

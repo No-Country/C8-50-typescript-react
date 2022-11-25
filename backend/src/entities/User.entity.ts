@@ -4,6 +4,7 @@ import { RealState } from './RealState.entity';
 import { Entity, Column, OneToMany, ManyToMany, JoinTable } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 import { Rol } from './rol.entity';
+import { Call } from './Call.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -38,4 +39,7 @@ export class User extends BaseEntity {
 
     @ManyToOne(() => Rol, (rol) => rol.user)
     rol: Rol
+
+    @OneToMany(()=> Call, (call)=> call.user)
+    call: Call
 }
