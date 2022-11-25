@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import logo from "../../assets/img/logo.png"
+import { useNavigate } from "react-router-dom"
 import {
   ContainerCard,
   Card,
@@ -27,6 +28,8 @@ const LoginForm = (): any => {
 
   const {handleSubmit, register, reset, formState: {errors}} = useForm<loginForm>()
   const [isVisibility, setIsVisibily] =  useState(false)
+  
+  
   const viewPassword = (): any =>{
     setIsVisibily(!isVisibility)
   }
@@ -42,27 +45,33 @@ const LoginForm = (): any => {
 
   }
 
+
+  const Navigate = useNavigate()
+
+
+
+
   return (
-    <ContainerCard className="container-card" >
-      <Card className="login-card" >
-        <Close type="button" className="close" >
+    <ContainerCard  >
+      <Card  >
+        <Close onClick={() => Navigate("/")} type="button"  >
           <MaterialSymbolsoutlined className="material-symbols-outlined">close</MaterialSymbolsoutlined>
         </Close>
-        <ImgLogo className="logo" src={logo} alt="logo-inmobiliaria" />
-        <TitleLogin className="title-login" > Iniciar sesion </TitleLogin>
-        <Form className="form" onSubmit={ handleSubmit(onSubmit)} >
-          <Containerinput className="container-input">
+        <ImgLogo  src={logo} alt="logo-inmobiliaria" />
+        <TitleLogin  > Iniciar sesion </TitleLogin>
+        <Form  onSubmit={ handleSubmit(onSubmit)} >
+          <Containerinput >
             <LabelInput htmlFor="emailInput">Correo</LabelInput>
             <InputForm
               type="text"
               id="emailInput"
               placeholder="Example@gmail.com"
               {...register("email", {required: true})} />
-              {errors.email?.type === "required" && <ErrorInput className="errorInput" >Inserte el correo</ErrorInput> }
+              {errors.email?.type === "required" && <ErrorInput  >Inserte el correo</ErrorInput> }
           </Containerinput>
-          <Containerinput className="container-input" >
+          <Containerinput  >
             <LabelInput htmlFor="passwordInput">Contraseña</LabelInput>
-            <ViewButton type="button" onClick={ viewPassword} className="button-visibility" >
+            <ViewButton type="button" onClick={ viewPassword}  >
             <MaterialSymbolsoutlined className="material-symbols-outlined">{isVisibility ? "visibility" : "visibility_off"}</MaterialSymbolsoutlined>
             </ViewButton>
             <InputForm
@@ -70,11 +79,11 @@ const LoginForm = (): any => {
               id="passwordInput"
               placeholder="**********"
               {...register("password", {required: true})} />
-              {errors.password?.type === "required" && <ErrorInput className="errorInput" >Inserte la contraseña</ErrorInput> }
+              {errors.password?.type === "required" && <ErrorInput  >Inserte la contraseña</ErrorInput> }
           </Containerinput>
-          <ButtonLogin className="button-login" type="submit" > Iniciar sesion </ButtonLogin>
+          <ButtonLogin  type="submit" > Iniciar sesion </ButtonLogin>
         </Form>
-        <CambioRegister className="not-account" >¿No tienes cuenta? <SpanCambio className="register_click" >Registrate</SpanCambio> </CambioRegister>
+        <CambioRegister  >¿No tienes cuenta? <SpanCambio onClick={() => Navigate("/sign-up") }  >Registrate</SpanCambio> </CambioRegister>
       </Card>
     </ContainerCard>
   )

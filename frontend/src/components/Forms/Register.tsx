@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import logo from "../../assets/img/logo.png"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import {
   ContainerCard,
   Card,
@@ -56,10 +57,12 @@ const RegisterForm = (): any => {
   }
 
 
+  const Navigate = useNavigate()
+
   return (
     <ContainerCard >
       <Card  >
-        <Close  >
+        <Close type="button" onClick={() => Navigate("/")} >
           <MaterialSymbolsoutlined className="material-symbols-outlined">close</MaterialSymbolsoutlined>
         </Close>
         <ImgLogo src={logo} alt="logo-inmobiliaria" />
@@ -99,8 +102,10 @@ const RegisterForm = (): any => {
           </Containerinput>
           <ButtonRegister type="submit" > Register </ButtonRegister>
         </Form>
-        <CambioLogin  > ¿ Ya tienes cuenta?  <SpanCambio> iniciar sesion </SpanCambio> </CambioLogin>
+        <CambioLogin  > ¿ Ya tienes cuenta?  <SpanCambio onClick={() => Navigate("/login") } > iniciar sesion </SpanCambio> </CambioLogin>
       </Card>
     </ContainerCard>
   )
 }
+
+export default RegisterForm
