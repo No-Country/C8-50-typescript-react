@@ -1,6 +1,5 @@
-
 import { SubmitHandler, useForm } from "react-hook-form"
-import logo from "../assets/img/logo.png"
+import logo from "../../assets/img/logo.png"
 import { useState } from "react"
 import {
   ContainerCard,
@@ -18,7 +17,7 @@ import {
   ButtonRegister,
   ViewButton,
   MaterialSymbolsoutlined
-} from "../styled-components/styled.register"
+} from "../../styled-components/styles.forms/styled.register"
 
 
 
@@ -31,7 +30,7 @@ interface userForm {
 
 
 
-const RegisterForm = (): JSX.Element => {
+const RegisterForm = (): any => {
 
 
 
@@ -105,5 +104,3 @@ const RegisterForm = (): JSX.Element => {
     </ContainerCard>
   )
 }
-
-export default RegisterForm

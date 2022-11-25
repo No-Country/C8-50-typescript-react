@@ -1,3 +1,13 @@
+import HomeSearch from '../../components/HomeSearch/HomeSearch';
+import InfoHome from '../../components/Info-home';
+import CardsInfo from '../../components/Cards-info';
 export default function Home(): any {
-	return <h1>Pagina inicio</h1>;
+	return (
+		<>
+			Pagina inicio
+			<HomeSearch />
+			<InfoHome />
+			<CardsInfo/>
+		</>
+	);
 }
