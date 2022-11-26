@@ -6,6 +6,7 @@ import { BaseEntity } from '../config/base.entity'
 import { Call } from './Call.entity';
 import { Wishlist } from './Whislist.entity';
 import { Operation } from './Operation.entity';
+import { Type } from './type.entity';
 
 @Entity()
 export class RealState extends BaseEntity {
@@ -38,5 +39,8 @@ export class RealState extends BaseEntity {
 
     @ManyToOne(()=> Operation, (operation)=> operation.realstate)
     operation: Operation
+
+    @ManyToOne(()=> Type, (type)=> type.realstate)
+    type: Operation
 
 }
