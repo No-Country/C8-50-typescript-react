@@ -7,6 +7,7 @@ import { Call } from './Call.entity';
 import { Wishlist } from './Whislist.entity';
 import { Operation } from './Operation.entity';
 import { Type } from './type.entity';
+import { Quantity } from './Quantity.entity';
 
 @Entity()
 export class RealState extends BaseEntity {
@@ -42,5 +43,8 @@ export class RealState extends BaseEntity {
 
     @ManyToOne(()=> Type, (type)=> type.realstate)
     type: Operation
+
+    @ManyToOne(()=> Quantity, (quantity)=> quantity.realstate)
+    quantity: Quantity
 
 }
