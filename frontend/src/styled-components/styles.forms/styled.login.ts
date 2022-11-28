@@ -41,7 +41,9 @@ position: absolute;
 top: 13px;
 right: 17px;
 background: transparent;
-border: none;`
+border: none;
+cursor: pointer;
+`
 
 export const ImgLogo = styled.img`
 width: 96px;
@@ -78,6 +80,7 @@ margin: 0;
 export const SpanCambio = styled.span`
 color: #3d4cd7;
 font-weight: bold;
+cursor: pointer;
 &:hover{
 	border-bottom: 1px solid #3d4cd7;
 }

@@ -3,7 +3,8 @@ import LoginForm from './components/Forms/Login';
 import RegisterForm from "./components/Forms/Register"
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/home';
-import PropiedadDetail from './pages/Home/PropiedadDetail';
+import PropiedadDetail from './pages/PropiedadDetail';
+import PropiedadesPage from './pages/Propiedades';
 
 function App(): any {
 	return (
@@ -16,6 +17,7 @@ function App(): any {
 
 
 				<Route path='/' element={<Home />} />
+				<Route path='/propiedades' element={<PropiedadesPage />} />
 				<Route path="/propiedades/:id"  element={<PropiedadDetail/>} />
 			</Routes>
 		</BrowserRouter>
