@@ -8,9 +8,12 @@ export class JWT {
         return token
     }
     validateToken(req: Request, res: Response, next: NextFunction){
-        const token = req.header('auth-token')
-        if (!token) return res.status(401).json({ error: 'Acceso denegado' })
+  
         try {
+            let token = req.headers.authorization || '';
+            if (token.startsWith('Bearer ')) {
+                token = token.slice(7, token.length);
+            }
             const verified = verify(token, process.env.JWT_secret!) as string
             req.userId = verified
             next() // continuamos
