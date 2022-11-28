@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
+import { PostgresDataSource } from "../db";
+import { User } from "../entities/User.entity";
+
 
 export class UserController {
-    getUsers(req: Request, res: Response) {
+    async getUsers(req: Request, res: Response) {
+        const db = await PostgresDataSource.getRepository(User).find()
         res.status(200).json({
-            user: "Usuario de prueba",
+            user: db,
         })
     }
 }
