@@ -5,10 +5,10 @@ import { User } from "./User.entity";
 @Entity()
 export class Rol extends BaseEntity{
     @Column()
-    nombre: string;
+    name: string;
 
     @Column()
-    descripcion: string;
+    description: string;
 
     @OneToMany(() => User, (user) => user.rol)
     user: User[]
