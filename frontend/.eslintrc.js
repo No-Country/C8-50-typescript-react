@@ -35,5 +35,6 @@ module.exports = {
 				checksVoidReturn: false,
 			},
 		],
+		"@typescript-eslint/strict-boolean-expressions": "warn"
 	},
 };

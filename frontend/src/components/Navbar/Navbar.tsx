@@ -6,10 +6,19 @@ import {
 	NavBtn,
 	NavBtnLink,
 	LogoImg,
+	BgDiv,
 } from '../../styled-components/styled.navbarElements';
 import Logo from '../../assets/img/logo.png';
+import BurgerBtn from './BurgerBtn';
+import { useState } from 'react';
 
 const Navbar = (): any => {
+	const [clicked, setClicked] = useState<boolean>(false);
+
+	const handleClick = (): any => {
+		setClicked(!clicked);
+	};
+
 	return (
 		<>
 			<Nav>
@@ -20,12 +29,28 @@ const Navbar = (): any => {
 					</NavBtnLink>
 				</NavBtn>
 				<NavMenu>
-					<NavLink to='/'>Home</NavLink>
-					<NavLink to='/vender'>Vender</NavLink>
-					<NavLink to='/comprar'>Comprar</NavLink>
-					<NavLink to='/contact'>contactarnos</NavLink>
-					<NavLink to='/sign-up'>Sign Up</NavLink>
+					<div className={`links ${clicked ? 'active' : ''}`}>
+						<NavLink onClick={handleClick} to='/'>
+							Home
+						</NavLink>
+						<NavLink onClick={handleClick} to='/vender'>
+							Vender
+						</NavLink>
+						<NavLink onClick={handleClick} to='/comprar'>
+							Comprar
+						</NavLink>
+						<NavLink onClick={handleClick} to='/contact'>
+							Contactos
+						</NavLink>
+						<NavLink onClick={handleClick} to='/sign-up'>
+							Sign Up
+						</NavLink>
+					</div>
 				</NavMenu>
+				<div className='burguer'>
+					<BurgerBtn clicked={clicked} handleClick={handleClick} />
+				</div>
+				<BgDiv className={`initial ${clicked ? 'active' : ''}`}></BgDiv>
 			</Nav>
 		</>
 	);
