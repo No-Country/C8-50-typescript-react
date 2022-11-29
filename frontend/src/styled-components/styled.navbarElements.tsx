@@ -2,12 +2,12 @@ import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LogoImg = styled.img`
-	width: 75px;
+	width: 65px;
 	margin: 0 auto;
 `;
 export const Nav = styled.nav`
 	background: #e6efe8;
-	height: 65px;
+	height: 60px;
 	display: flex;
 	justify-content: space-between;
 	padding: 0.2rem;
@@ -63,7 +63,7 @@ export const NavMenu = styled.div`
 			position: initial;
 			margin: 0;
 			a {
-				font-size: 1.5rem;
+				font-size: 1.2rem;
 				display: inline;
 				margin: 2px;
 			}
