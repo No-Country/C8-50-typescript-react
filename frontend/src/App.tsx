@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/home';
 import PropiedadDetail from './pages/PropiedadDetail';
 import PropiedadesPage from './pages/Propiedades';
+import Profile from './pages/Profile/Profile';
 
 function App(): any {
 	return (
@@ -19,6 +20,7 @@ function App(): any {
 				<Route path='/' element={<Home />} />
 				<Route path='/propiedades' element={<PropiedadesPage />} />
 				<Route path="/propiedades/:id"  element={<PropiedadDetail/>} />
+				<Route path='/profile' element={<Profile />} />
 			</Routes>
 		</BrowserRouter>
 	);
