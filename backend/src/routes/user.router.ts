@@ -9,5 +9,7 @@ export class UserRouter extends indexRouter<UserController,Auth>{
 
     routes(): void {
         this.router.get('/user', (req, res)=>this.controller.getAllUsers(req, res))
+        this.router.get('/user/:id', (req, res)=>this.controller.getUserById(req, res))
     }
+
 }
