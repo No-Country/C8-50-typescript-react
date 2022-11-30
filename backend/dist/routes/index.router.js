@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.indexRouter = void 0;
 const express_1 = require("express");
 class indexRouter {
-    //public middleware: Middleware
-    constructor(TController) {
+    constructor(TController, UMiddleware) {
         this.router = (0, express_1.Router)();
         this.controller = new TController;
+        this.middleware = new UMiddleware;
         this.routes();
     }
     routes() { }

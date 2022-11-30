@@ -1,4 +1,6 @@
 import * as dotenv from "dotenv";
+import { DataSource } from "typeorm";
+import { PostgresDataSource } from "../db";
 
 export abstract class Config {
 
@@ -29,6 +31,10 @@ export abstract class Config {
       arrEnv.unshift(...stringToArray);
     }
     return "." + arrEnv.join(".");
+  }
+
+  get dbInitialize(): Promise<DataSource> {
+    return PostgresDataSource.initialize();
   }
 
 }
