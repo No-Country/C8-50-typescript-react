@@ -26,10 +26,19 @@ export class JWT {
             next(res.status(400).json({error: 'token no es válido'}))
         }
     }
+    decodetoken(req: Request){
+        let token = req.headers.authorization || ''
+        if(token?.startsWith('Bearer ')){
+            token = token.slice(7, token.length);
+        }
+        const deco = verify(token, String(process.env.JWT_secret)) as string
+        const bus = Object.values(deco)
+        return bus[0]
+        
+    }
     async isAdmin(req: Request, res: Response, next: NextFunction){
-        const { userId } = req
-        const ids = "User"
-        const user = await PostgresDataSource.getRepository(User).findOne({where: {id: userId}, relations:{rol: true} })
+        const ids = this.decodetoken(req)
+        const user = await PostgresDataSource.getRepository(User).findOne({where: {id: ids}, relations:{rol: true} })
         if(!user){
             next(res.status(401).json("Unauthorized"))
         }
