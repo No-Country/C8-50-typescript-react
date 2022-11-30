@@ -12,7 +12,7 @@ class Server extends App{
     }
 
     async serverConnection(): Promise<DataSource | void> {
-        return PostgresDataSource.initialize()
+        return this.dbInitialize
           .then(() => {
             console.log("Database successfully connected!!");
           })

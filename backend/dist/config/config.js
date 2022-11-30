@@ -25,6 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Config = void 0;
 const dotenv = __importStar(require("dotenv"));
+const db_1 = require("../db");
 class Config {
     constructor() {
         const nodeNameEnv = this.createPathEnv(this.nodeEnv);
@@ -49,6 +50,9 @@ class Config {
             arrEnv.unshift(...stringToArray);
         }
         return "." + arrEnv.join(".");
+    }
+    get dbInitialize() {
+        return db_1.PostgresDataSource.initialize();
     }
 }
 exports.Config = Config;

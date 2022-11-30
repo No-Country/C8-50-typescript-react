@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
-const db_1 = require("./db");
 class Server extends app_1.App {
     constructor() {
         super();
@@ -19,7 +18,7 @@ class Server extends app_1.App {
     }
     serverConnection() {
         return __awaiter(this, void 0, void 0, function* () {
-            return db_1.PostgresDataSource.initialize()
+            return this.dbInitialize
                 .then(() => {
                 console.log("Database successfully connected!!");
             })
