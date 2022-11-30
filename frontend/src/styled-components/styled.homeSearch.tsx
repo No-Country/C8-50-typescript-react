@@ -1,14 +1,14 @@
 import styled from 'styled-components';
+import Img from '../assets/img/bgSearch.jpg';
 
 export const Form = styled.form`
-	width: 100%;
+	width: 60%;
 	display: flex;
 	justify-content: center;
-
+	margin: auto;
 	flex-direction: column;
-	background-color: #1c1ac51f;
 	border: none;
-	height: 80vh;
+	height: 60vh;
 `;
 
 export const InputBtn = styled.button`
@@ -73,4 +73,18 @@ export const Button = styled.button`
 	padding: 0.5em 1em;
 	border: 1px solid #a9b8c9;
 	border-radius: 5px;
+`;
+
+export const BgSearch = styled.div`
+	background-image: url(${Img});
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 70vh;
+	margin-bottom: 25px;
+	.search {
+		@media (max-width: 768px) {
+			width: 90%;
+		}
+	}
 `;

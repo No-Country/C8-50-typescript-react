@@ -6,6 +6,7 @@ import {
 	Input,
 	Select,
 	Button,
+	BgSearch,
 } from '../../styled-components/styled.homeSearch';
 
 function HomeSearch(): any {
@@ -30,8 +31,8 @@ function HomeSearch(): any {
 	};
 
 	return (
-		<>
-			<Form onSubmit={handleSubmit}>
+		<BgSearch>
+			<Form onSubmit={handleSubmit} className='search'>
 				<ContainerDiv>
 					<InputBtn
 						onClick={() => {
@@ -80,7 +81,7 @@ function HomeSearch(): any {
 					<Button type='submit'>IR</Button>
 				</ContainerDiv>
 			</Form>
-		</>
+		</BgSearch>
 	);
 }
 
