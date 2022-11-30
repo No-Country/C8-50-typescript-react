@@ -49,6 +49,18 @@ class UserController {
                 return this.httpResponse.Forbidden(res, "No Autorizado");
             }
             catch (error) {
+    getUserById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            try {
+                const data = yield this.userService.findUserById(id);
+                if (!data) {
+                    return this.httpResponse.NotFound(res, "Usuario no encontrado");
+                }
+                return this.httpResponse.Ok(res, data);
+            }
+            catch (error) {
+                console.error(error);
                 return this.httpResponse.Error(res, error);
             }
         });
