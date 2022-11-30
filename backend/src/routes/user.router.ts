@@ -1,10 +1,10 @@
 import { UserController } from "../controllers/user.controller";
-import { JWT } from "../middlewares/auth.middleware";
+import { Auth } from "../middlewares/auth.middleware";
 import { indexRouter } from "./index.router";
 
-export class UserRouter extends indexRouter<UserController,JWT>{
+export class UserRouter extends indexRouter<UserController,Auth>{
     constructor(){
-        super(UserController,JWT)
+        super(UserController,Auth)
     }
 
     routes(): void {
