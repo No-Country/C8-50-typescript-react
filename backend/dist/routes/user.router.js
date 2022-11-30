@@ -6,10 +6,11 @@ const auth_middleware_1 = require("../middlewares/auth.middleware");
 const index_router_1 = require("./index.router");
 class UserRouter extends index_router_1.indexRouter {
     constructor() {
-        super(user_controller_1.UserController, auth_middleware_1.JWT);
+        super(user_controller_1.UserController, auth_middleware_1.Auth);
     }
     routes() {
         this.router.get('/user', (req, res) => this.controller.getAllUsers(req, res));
+        this.router.post('/user/register', (req, res) => this.controller.registerUser(req, res));
     }
 }
 exports.UserRouter = UserRouter;
