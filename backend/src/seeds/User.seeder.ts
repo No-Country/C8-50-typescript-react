@@ -16,7 +16,7 @@ export class UserSeeder implements Seeder {
         lastName: "Gonzáles",
         email: "mati@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Maty1234", 10),
+        password: await bcrypt.hashSync("Maty1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219986.png",
       },
       {
@@ -24,7 +24,7 @@ export class UserSeeder implements Seeder {
         lastName: "Salazar",
         email: "noe@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Noe1234", 10),
+        password: await bcrypt.hashSync("Noe1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219989.png",
       },
       {
@@ -32,7 +32,7 @@ export class UserSeeder implements Seeder {
         lastName: "Rodríguez",
         email: "lucho@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Lucho1234", 10),
+        password: await bcrypt.hashSync("Lucho1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/3003/3003035.png",
       },
       {
@@ -40,7 +40,7 @@ export class UserSeeder implements Seeder {
         lastName: "López",
         email: "rafa@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Rafa1234", 10),
+        password: await bcrypt.hashSync("Rafa1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219986.png",
       },
       {
@@ -48,7 +48,7 @@ export class UserSeeder implements Seeder {
         lastName: "Peñaloza",
         email: "flor@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Flor1234", 10),
+        password: await bcrypt.hashSync("Flor1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219989.png",
       },
       {
@@ -56,7 +56,7 @@ export class UserSeeder implements Seeder {
         lastName: "Ortega",
         email: "javi@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Javi1234", 10),
+        password: await bcrypt.hashSync("Javi1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/3003/3003035.png",
       },
       {
@@ -64,7 +64,7 @@ export class UserSeeder implements Seeder {
         lastName: "Aranda",
         email: "lucas@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Lucas1234", 10),
+        password: await bcrypt.hashSync("Lucas1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219986.png",
       },
       {
@@ -72,7 +72,7 @@ export class UserSeeder implements Seeder {
         lastName: "Monaco",
         email: "lau@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Lau1234", 10),
+        password: await bcrypt.hashSync("Lau1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219989.png",
       },
       {
@@ -80,7 +80,7 @@ export class UserSeeder implements Seeder {
         lastName: "Mercado",
         email: "david@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("David1234", 10),
+        password: await bcrypt.hashSync("David1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/3003/3003035.png",
       },
       {
@@ -88,7 +88,7 @@ export class UserSeeder implements Seeder {
         lastName: "Talquenca",
         email: "juan@gmail.com",
         telephone: "000000000000",
-        password: await bcrypt.hash("Juan1234", 10),
+        password: await bcrypt.hashSync("Juan1234", 10),
         img: "https://cdn-icons-png.flaticon.com/512/219/219986.png",
       },
     ];

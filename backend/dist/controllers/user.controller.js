@@ -49,6 +49,10 @@ class UserController {
                 return this.httpResponse.Forbidden(res, "No Autorizado");
             }
             catch (error) {
+                return this.httpResponse.Error(res, error);
+            }
+        });
+    }
     getUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
@@ -61,6 +65,24 @@ class UserController {
             }
             catch (error) {
                 console.error(error);
+                return this.httpResponse.Error(res, error);
+            }
+        });
+    }
+    loginUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.userService.emailUser(req.body.email);
+                if (user) {
+                    const password = this.userService.comparePassword(req.body.password, user.password);
+                    if (password) {
+                        const token = this.userService.token(user);
+                        return this.httpResponse.Ok(res, { token: token });
+                    }
+                }
+                return this.httpResponse.Unauthorized(res, "No autorizado");
+            }
+            catch (error) {
                 return this.httpResponse.Error(res, error);
             }
         });

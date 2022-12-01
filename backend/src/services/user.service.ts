@@ -65,5 +65,9 @@ export class UserService extends BaseService<User> {
     const dat = (await this.repository).findOneBy({email: emails});
     return dat
   }
+  comparePassword(password: string, passworduser: string){
+    const math: boolean = bcrypt.compareSync(password, passworduser);
+    return math
+  }
   
 }
