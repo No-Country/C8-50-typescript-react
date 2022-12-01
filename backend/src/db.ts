@@ -1,6 +1,9 @@
-import { DataSource } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
+import { SeederOptions} from "typeorm-extension";
 import * as dotenv from "dotenv";
+import { MainSeeder } from "./seeds/Main.seeder";
+
 
 
 dotenv.config({
@@ -10,18 +13,20 @@ dotenv.config({
         : ".env",
   });
 
+const options: DataSourceOptions & SeederOptions = {
+  type: "postgres",
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  entities: [__dirname + "/**/*.entity{.ts,.js}"],
+  migrations: [__dirname + "/**/*.migrations{.ts,.js}"],
+  synchronize: true,
+  migrationsRun: true,
+  logging: false,
+  namingStrategy: new SnakeNamingStrategy(),
+  seeds: [MainSeeder]
+}
 
-export const PostgresDataSource = new DataSource({
-    type: "postgres",
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    entities: [__dirname + "/**/*.entity{.ts,.js}"],
-    migrations: [__dirname + "/**/*.migrations{.ts,.js}"],
-    synchronize: true,
-    migrationsRun: true,
-    logging: false,
-    namingStrategy: new SnakeNamingStrategy(),
-  });
+export const PostgresDataSource = new DataSource(options);

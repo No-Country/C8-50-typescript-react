@@ -45,4 +45,17 @@ export class Auth {
         }
         return next()
     }
+
+    async isSuperAdmin(req: Request, res: Response, next: NextFunction){
+        const ids = this.decodetoken(req)
+        const user = await PostgresDataSource.getRepository(User).findOne({where: {id: ids}, relations:{rol: true} })
+        if(!user){
+            next(res.status(401).json("Usuario no encontrado"))
+        }
+        if(!user?.rol || user.rol.name !== "superAdmin"){
+            next(res.status(403).json("Permisos insuficientes"))
+        }
+        return next()
+    }
+
 }
