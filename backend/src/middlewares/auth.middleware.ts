@@ -58,4 +58,24 @@ export class Auth {
         return next()
     }
 
+    async isOwner(req: Request, res: Response, next: NextFunction){
+        const idToken = this.decodetoken(req)
+        const { id } = req.params
+
+        try {
+            const user = await PostgresDataSource.getRepository(User).findOne({where: {id: idToken}, relations:{rol: true} })
+            if(!user){
+                next(res.status(403).json("Permiso insuficiente"))
+            }
+            if( idToken != id){
+                next(res.status(403).json("El usuario no es el propietario de la cuenta."))
+            }
+            if( idToken == id) {
+                return next()
+            }
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }

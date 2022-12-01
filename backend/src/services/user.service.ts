@@ -1,12 +1,12 @@
 import { User } from "../entities/User.entity";
 import { BaseService } from "./base.service";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 import { Auth } from "../middlewares/auth.middleware";
 import { DataSource } from "typeorm";
 
 export class UserService extends BaseService<User> {
   private readonly mid: Auth = new Auth();
-    constructor() {
+  constructor() {
     super(User);
   }
 
@@ -21,7 +21,7 @@ export class UserService extends BaseService<User> {
       withDeleted: false,
       order: {
         lastName: "ASC",
-    },
+      },
     });
   }
 
@@ -31,56 +31,71 @@ export class UserService extends BaseService<User> {
       select: {
         deleteAt: false,
       },
-      relations: { rol: true},
+      relations: { rol: true },
       withDeleted: false,
     });
   }
-  filterPasswordUser(user: User){
+  filterPasswordUser(user: User) {
     const response = {
       id: user.id,
       firsname: user.firstName,
       lastname: user.lastName,
       email: user.email,
       telephone: user.telephone,
-    }
-    return response
+    };
+    return response;
   }
-  token(user: any){
-    const token = this.mid.createToken(user, user.id)
-    return token
+  token(user: any) {
+    const token = this.mid.createToken(user, user.id);
+    return token;
   }
-  juntar(tok: string, user: any){
-
+  juntar(tok: string, user: any) {
     const dat = {
-      "data": user,
-      "Token":tok
-    }
-    return dat
+      data: user,
+      Token: tok,
+    };
+    return dat;
   }
-  async registerUser(body: User)  { 
-    body.password = bcrypt.hashSync(body.password, String(bcrypt.genSaltSync(8)));
-    return (await this.repository).save(body)
-
+  async registerUser(body: User) {
+    body.password = bcrypt.hashSync(
+      body.password,
+      String(bcrypt.genSaltSync(8))
+    );
+    return (await this.repository).save(body);
   }
-  async emailUser(emails: string){
-    const dat = (await this.repository).findOneBy({email: emails});
-    return dat
+  async emailUser(emails: string) {
+    const dat = (await this.repository).findOneBy({ email: emails });
+    return dat;
   }
-  comparePassword(password: string, passworduser: string){
+  comparePassword(password: string, passworduser: string) {
     const math: boolean = bcrypt.compareSync(password, passworduser);
-    return math
+    return math;
   }
 
-  async changeRol(userId: string, rolId: string){
+  async changeRol(userId: string, rolId: string) {
     if (rolId === "1") {
-      (await this.repository).createQueryBuilder().relation(User, "rol").of(userId).set(2);
-    } else 
-    if (rolId === "2") {
-      (await this.repository).createQueryBuilder().relation(User, "rol").of(userId).set(1);
+      (await this.repository)
+        .createQueryBuilder()
+        .relation(User, "rol")
+        .of(userId)
+        .set(2);
+    } else if (rolId === "2") {
+      (await this.repository)
+        .createQueryBuilder()
+        .relation(User, "rol")
+        .of(userId)
+        .set(1);
     } else {
-      return 
+      return;
     }
-
   }
-  
+
+  async deleteUser(id: string) {
+    (await this.repository)
+      .createQueryBuilder()
+      .delete()
+      .from(User)
+      .where({ id: id })
+      .execute();
+  }
 }

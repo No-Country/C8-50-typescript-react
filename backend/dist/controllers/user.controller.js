@@ -111,5 +111,22 @@ class UserController {
             }
         });
     }
+    deleteUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            try {
+                const data = yield this.userService.findUserById(id);
+                if (!data) {
+                    return this.httpResponse.NotFound(res, "Usuario no encontrado");
+                }
+                yield this.userService.deleteUser(id);
+                return this.httpResponse.Ok(res);
+            }
+            catch (error) {
+                console.error(error);
+                return this.httpResponse.Error(res, error);
+            }
+        });
+    }
 }
 exports.UserController = UserController;

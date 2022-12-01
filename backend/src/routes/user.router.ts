@@ -25,5 +25,15 @@ export class UserRouter extends indexRouter<UserController, Auth> {
       (req, res, next) => [this.middleware.isSuperAdmin(req, res, next)],
       (req, res) => this.controller.changeRol(req, res)
     );
+    this.router.delete(
+      "/user/:id",
+      (req, res, next) => [this.middleware.isOwner(req, res, next)],
+      (req, res) => this.controller.deleteUser(req, res)
+    );
+    this.router.delete(
+      "/user/:id",
+      (req, res, next) => [this.middleware.isSuperAdmin(req, res, next)],
+      (req, res) => this.controller.deleteUser(req, res)
+    );
   }
 }

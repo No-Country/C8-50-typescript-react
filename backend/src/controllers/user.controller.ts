@@ -92,5 +92,20 @@ export class UserController {
       return this.httpResponse.Error(res, error);
     }
   }
-  
+
+  async deleteUser(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const data = await this.userService.findUserById(id);
+      if (!data) {
+        return this.httpResponse.NotFound(res, "Usuario no encontrado");
+      }
+      await this.userService.deleteUser(id)
+      return this.httpResponse.Ok(res);
+    } catch (error) {
+      console.error(error);
+      return this.httpResponse.Error(res, error);
+    }
+  }
+
 }
