@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { HttpResponse } from "../config/HttpResponse";
+import { User } from "../entities/User.entity";
 import { UserService } from "../services/user.service";
 
 
@@ -66,6 +67,27 @@ export class UserController {
         }
       }
       return this.httpResponse.Unauthorized(res, "No autorizado")
+    } catch (error) {
+      return this.httpResponse.Error(res, error);
+    }
+  }
+
+  async changeRol(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const user = await this.userService.findUserById(id);
+      if (!user) {
+        return this.httpResponse.NotFound(res, "Usuario no encontrado");
+      }
+      const userId = user.id
+      const rolId = user.rol.id
+      if(rolId !== "3") {
+        await this.userService.changeRol(userId, rolId)
+        return this.httpResponse.Ok(res);
+      }else {
+        const error = new Error("El rol no pudo ser modificado.");
+        return this.httpResponse.Error(res, error);
+      }
     } catch (error) {
       return this.httpResponse.Error(res, error);
     }
