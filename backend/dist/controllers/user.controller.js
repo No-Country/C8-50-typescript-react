@@ -31,6 +31,24 @@ class UserController {
             }
         });
     }
+    registerUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const body = req.body;
+            const exist = yield this.userService.emailUser(body.email);
+            if (exist !== null) {
+                return this.httpResponse.NotFound(res, "Ya Existe ese email");
+            }
+            try {
+                const data = yield this.userService.registerUser(body);
+                if (data) {
+                    const pass = this.userService.filterPasswordUser(data);
+                    const tok = this.userService.token(data);
+                    const resu = this.userService.juntar(tok, pass);
+                    return this.httpResponse.Ok(res, resu);
+                }
+                return this.httpResponse.Forbidden(res, "No Autorizado");
+            }
+            catch (error) {
     getUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

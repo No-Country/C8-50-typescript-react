@@ -21,6 +21,26 @@ export class UserController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async registerUser(req: Request, res: Response){
+      const body = req.body
+      const exist = await this.userService.emailUser(body.email)
+      if(exist !== null){
+        return this.httpResponse.NotFound(res, "Ya Existe ese email")
+      }
+      try {
+      const data = await this.userService.registerUser(body)
+      if(data){
+        const pass = this.userService.filterPasswordUser(data)
+        const tok = this.userService.token(data)
+        const resu = this.userService.juntar(tok, pass)
+        return this.httpResponse.Ok(res, resu)
+      }
+      return this.httpResponse.Forbidden(res, "No Autorizado")
+    } catch (error) {
+      return this.httpResponse.Error(res, error)
+    }
+
+  }
 
   async getUserById(req: Request, res: Response) {
     const { id } = req.params;

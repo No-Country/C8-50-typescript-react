@@ -8,13 +8,11 @@ export class Auth {
     createToken(body: any, id:string){
         const rol = body.rol
         const token = sign({id, rol},String(process.env.JWT_secret),{expiresIn: '2h'})
-        console.log(token)
+
         return token
     }
     validateToken(req: Request, res: Response, next: NextFunction){
-  
         try {
-            
             let token = req.headers.authorization || '';
             if (token.startsWith('Bearer ')) {
                 token = token.slice(7, token.length);

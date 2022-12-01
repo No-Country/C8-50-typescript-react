@@ -10,6 +10,7 @@ class UserRouter extends index_router_1.indexRouter {
     }
     routes() {
         this.router.get('/user', (req, res) => this.controller.getAllUsers(req, res));
+        this.router.post('/user/register', (req, res) => this.controller.registerUser(req, res));
         this.router.get('/user/:id', (req, res) => this.controller.getUserById(req, res));
     }
 }
