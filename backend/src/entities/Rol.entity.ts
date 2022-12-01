@@ -1,15 +1,18 @@
-import { Entity, Column, OneToMany} from "typeorm";
-import { BaseEntity } from "../config/base.entity";
+import { Entity, Column, OneToMany, PrimaryColumn} from "typeorm";
 import { User } from "./User.entity";
 
 @Entity()
-export class Rol extends BaseEntity{
+export class Rol{
+    @PrimaryColumn()
+    id!: string;
+
     @Column()
     name: string;
-
+    
     @Column()
     description: string;
-
+    
     @OneToMany(() => User, (user) => user.rol)
     user: User[]
+
 }
