@@ -128,5 +128,24 @@ class UserController {
             }
         });
     }
+    updateUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { firstName, lastName, email, telephone, img } = req.body;
+            const newData = { firstName, lastName, email, telephone, img };
+            try {
+                const data = yield this.userService.findUserById(id);
+                if (!data) {
+                    return this.httpResponse.NotFound(res, "Usuario no encontrado");
+                }
+                yield this.userService.updateUser(id, newData);
+                return this.httpResponse.Ok(res);
+            }
+            catch (error) {
+                console.error(error);
+                return this.httpResponse.Error(res, error);
+            }
+        });
+    }
 }
 exports.UserController = UserController;

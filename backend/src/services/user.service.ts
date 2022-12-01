@@ -98,4 +98,13 @@ export class UserService extends BaseService<User> {
       .where({ id: id })
       .execute();
   }
+
+  async updateUser(id: string, newData : any) {
+    (await this.repository)
+      .createQueryBuilder()
+      .update(User)
+      .set(newData)
+      .where({ id: id })
+      .execute();
+  }
 }
