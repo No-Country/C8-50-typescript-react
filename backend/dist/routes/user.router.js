@@ -16,6 +16,7 @@ class UserRouter extends index_router_1.indexRouter {
         this.router.put("/user/changeRol/:id", (req, res, next) => [this.middleware.isSuperAdmin(req, res, next)], (req, res) => this.controller.changeRol(req, res));
         this.router.delete("/user/:id", (req, res, next) => [this.middleware.isOwner(req, res, next)], (req, res) => this.controller.deleteUser(req, res));
         this.router.delete("/user/:id", (req, res, next) => [this.middleware.isSuperAdmin(req, res, next)], (req, res) => this.controller.deleteUser(req, res));
+        this.router.put("/user/:id", (req, res, next) => [this.middleware.isOwner(req, res, next)], (req, res) => this.controller.updateUser(req, res));
     }
 }
 exports.UserRouter = UserRouter;
