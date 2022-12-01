@@ -2,6 +2,7 @@ import { User } from "../entities/User.entity";
 import { BaseService } from "./base.service";
 import bcrypt from "bcrypt"
 import { Auth } from "../middlewares/auth.middleware";
+import { DataSource } from "typeorm";
 
 export class UserService extends BaseService<User> {
   private readonly mid: Auth = new Auth();
@@ -68,6 +69,18 @@ export class UserService extends BaseService<User> {
   comparePassword(password: string, passworduser: string){
     const math: boolean = bcrypt.compareSync(password, passworduser);
     return math
+  }
+
+  async changeRol(userId: string, rolId: string){
+    if (rolId === "1") {
+      (await this.repository).createQueryBuilder().relation(User, "rol").of(userId).set(2);
+    } else 
+    if (rolId === "2") {
+      (await this.repository).createQueryBuilder().relation(User, "rol").of(userId).set(1);
+    } else {
+      return 
+    }
+
   }
   
 }

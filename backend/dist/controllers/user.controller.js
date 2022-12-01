@@ -87,5 +87,29 @@ class UserController {
             }
         });
     }
+    changeRol(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            try {
+                const user = yield this.userService.findUserById(id);
+                if (!user) {
+                    return this.httpResponse.NotFound(res, "Usuario no encontrado");
+                }
+                const userId = user.id;
+                const rolId = user.rol.id;
+                if (rolId !== "3") {
+                    yield this.userService.changeRol(userId, rolId);
+                    return this.httpResponse.Ok(res);
+                }
+                else {
+                    const error = new Error("El rol no pudo ser modificado.");
+                    return this.httpResponse.Error(res, error);
+                }
+            }
+            catch (error) {
+                return this.httpResponse.Error(res, error);
+            }
+        });
+    }
 }
 exports.UserController = UserController;
