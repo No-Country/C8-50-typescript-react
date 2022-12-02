@@ -8,7 +8,7 @@ export const Form = styled.form`
 	margin: auto;
 	flex-direction: column;
 	border: none;
-	height: 60vh;
+	height: 70vh;
 `;
 
 export const InputBtn = styled.button`
@@ -80,8 +80,8 @@ export const BgSearch = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-	height: 70vh;
-	margin-bottom: 25px;
+	height: 75vh;
+	margin-bottom: 35px;
 	.search {
 		@media (max-width: 768px) {
 			width: 90%;

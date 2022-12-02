@@ -27,6 +27,7 @@ const Navbar = (): any => {
 					<NavBtnLink to='/'>
 						<LogoImg className='logo' src={Logo} alt='logo-inmobiliaria' />
 					</NavBtnLink>
+					<span>Inmobiliaria Zavalla</span>
 				</NavBtn>
 				<NavMenu>
 					<div className={`links ${clicked ? 'active' : ''}`}>
@@ -40,7 +41,7 @@ const Navbar = (): any => {
 							Comprar
 						</NavLink>
 						<NavLink onClick={handleClick} to='/contact'>
-							Contactos
+							Contacto
 						</NavLink>
 						<NavLink onClick={handleClick} to='/sign-up'>
 							Sign Up

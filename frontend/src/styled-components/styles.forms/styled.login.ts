@@ -1,18 +1,18 @@
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom';
 
  
 export const ContainerCard  = styled.div`
-background-color: #908c8ca8;
+background-color: #fff;
 width: 100%;
-height: 100%;
-position: fixed;
+height: 70vh;
+padding: 10px 0px 10px 0px;
 top: 0;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-z-index: 11;`
+`
 
 
 export const Card = styled.div`
@@ -75,7 +75,7 @@ font-size: .9rem;
 margin: 0;
 `
 
-export const SpanCambio = styled.span`
+export const SpanCambio = styled(Link)`
 color: #3d4cd7;
 font-weight: bold;
 &:hover{

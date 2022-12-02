@@ -6,11 +6,14 @@ export const LogoImg = styled.img`
 	margin: 0 auto;
 `;
 export const Nav = styled.nav`
-	background: #e6efe8;
+	background-color: #fcfcfc;
 	height: 60px;
 	display: flex;
 	justify-content: space-between;
-	padding: 0.2rem;
+	padding: 0.3rem;
+	margin: 0.3rem;
+	border-radius: 5px;
+	box-shadow: -2px 7px 7px 1px rgba(66, 64, 64, 0.4);
 	.burguer {
 		@media (min-width: 768px) {
 			display: none;
@@ -69,30 +72,40 @@ export const NavMenu = styled.div`
 			}
 		}
 	}
-
-	.links.active {
-		width: 100%;
-		display: block;
-		position: absolute;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 5px;
-		top: 20%;
-		left: 0;
-		right: 0;
-		text-align: center;
+	@media (max-width: 768px) {
+		.links.active {
+			width: 100%;
+			display: block;
+			position: absolute;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 5px;
+			top: 20%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			z-index: 3;
+		}
 	}
 `;
 
 export const NavBtn = styled.nav`
 	display: flex;
 	align-items: center;
+	flex-direction: column;
+	span {
+		color: #3a3737f5;
+		outline: none;
+		border: none;
+		font-size: 0.7rem;
+		font-weight: bold;
+	}
 `;
 
 export const NavBtnLink = styled(Link)`
 	border-radius: 4px;
-	background: #e9e9e9ed;
-	padding: 10px 22px;
+	background: #fcfcfc;
+	padding: 1px 22px;
 	color: #000000;
 	outline: none;
 	border: none;
@@ -100,6 +113,7 @@ export const NavBtnLink = styled(Link)`
 `;
 
 export const Burger = styled.div`
+	padding: 5px;
 	.nav-icon-5 {
 		width: 35px;
 		height: 30px;
@@ -159,11 +173,14 @@ export const BgDiv = styled.div`
 	left: -1000;
 	margin-top: 65px;
 	transition: all 0.5s ease;
-	&.active {
-		border-radius: 0 0 60% 0;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 70vh;
+	@media (max-width: 768px) {
+		&.active {
+			border-radius: 0 0 40% 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 90vh;
+			z-index: 2;
+		}
 	}
 `;
