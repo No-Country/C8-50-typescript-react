@@ -3,10 +3,10 @@ import styled from "styled-components";
 
  
 export const ContainerCard  = styled.div`
-background-color: #908c8ca8;
+background-color: #fff;
 width: 100%;
-height: 100%;
-position: fixed;
+height: 70vh;
+padding: 10px 0px 10px 0px;
 top: 0;
 display: flex;
 flex-direction: column;

@@ -41,7 +41,7 @@ const Navbar = (): any => {
 							Comprar
 						</NavLink>
 						<NavLink onClick={handleClick} to='/contact'>
-							Contactos
+							Contacto
 						</NavLink>
 						<NavLink onClick={handleClick} to='/sign-up'>
 							Sign Up
