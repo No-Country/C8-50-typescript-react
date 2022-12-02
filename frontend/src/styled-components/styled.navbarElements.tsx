@@ -69,18 +69,19 @@ export const NavMenu = styled.div`
 			}
 		}
 	}
-
-	.links.active {
-		width: 100%;
-		display: block;
-		position: absolute;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 5px;
-		top: 20%;
-		left: 0;
-		right: 0;
-		text-align: center;
+	@media (max-width: 768px) {
+		.links.active {
+			width: 100%;
+			display: block;
+			position: absolute;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 5px;
+			top: 20%;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
 	}
 `;
 
@@ -159,11 +160,13 @@ export const BgDiv = styled.div`
 	left: -1000;
 	margin-top: 65px;
 	transition: all 0.5s ease;
-	&.active {
-		border-radius: 0 0 60% 0;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 70vh;
+	@media (max-width: 768px) {
+		&.active {
+			border-radius: 0 0 60% 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 70vh;
+		}
 	}
 `;
