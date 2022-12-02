@@ -3,10 +3,16 @@ import styled from 'styled-components';
 export const Gallery = styled.div`
 	background-color: #ede5e5a6;
 	width: 100%;
+	margin-top: 1rem;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 1rem;
 	padding: 25px;
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.3rem;
+		padding: 5px;
+	}
 `;
 export const ImageGallery = styled.img`
 	grid-column: 1 / span 2;
@@ -42,13 +48,16 @@ export const CardInfo = styled.div`
 	border-radius: 5px;
 	padding: 25px;
 	margin: 25px;
-	background-color: #f8faffed;
+	background-color: #f8faff;
 	height: 200px;
 	align-self: center;
 	grid-row: 1 / 3;
 	grid-column: 3 / 5;
 	z-index: 2;
 	box-shadow: -2px 7px 7px 1px rgba(66, 64, 64, 0.77);
+	@media (max-width: 768px) {
+		grid-column: 1 / 3;
+	}
 `;
 
 export const Title = styled.h3`
@@ -65,8 +74,13 @@ export const P = styled.p`
 `;
 
 export const Btn = styled.button`
-	background-color: blue;
+	padding: 0.8rem;
+	width: 206px;
+	border-radius: 7px;
+	border: none;
+	background: #3d4cd7;
 	color: white;
-	border-radius: 5px;
-	padding: 10px;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
 `;
