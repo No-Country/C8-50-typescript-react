@@ -11,5 +11,8 @@ export class TypeRouter extends indexRouter<TypeController, Auth> {
     this.router.get("/realEstate/type", (req, res) =>
       this.controller.getAllType(req, res)
     );
+    this.router.delete("/realEstate/type/:id", (req, res) =>
+      this.controller.deleteTypeById(req, res)
+    );
   }
 }

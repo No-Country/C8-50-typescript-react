@@ -12,9 +12,28 @@ export class TypeController {
     try {
       const data = await this.typeService.getAllType();
       if (data.length === 0) {
-        return this.httpResponse.NotFound(res, "Tipos no encontrados");
+        return this.httpResponse.NotFound(
+          res,
+          "Tipos de propiedades no encontrados"
+        );
       }
       return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      return this.httpResponse.Error(res, error);
+    }
+  }
+  async deleteTypeById(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const data = await this.typeService.findTypeById(id);
+      if (!data) {
+        return this.httpResponse.NotFound(
+          res,
+          "No se encontraron tipos de propiedades"
+        );
+      }
+      await this.typeService.deleteType(id);
+      return this.httpResponse.Ok(res);
     } catch (error) {
       return this.httpResponse.Error(res, error);
     }
