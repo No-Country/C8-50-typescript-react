@@ -12,4 +12,19 @@ export class TypeService extends BaseService<Type> {
       order: { title: "ASC" },
     });
   }
+  async findTypeById(id: string): Promise<Type | null> {
+    return (await this.repository).findOne({
+      where: { id: id },
+      select: { id: true, title: true },
+      withDeleted: false,
+    });
+  }
+  async deleteType(id: string) {
+    return (await this.repository)
+      .createQueryBuilder()
+      .delete()
+      .from(Type)
+      .where({ id: id })
+      .execute();
+  }
 }
