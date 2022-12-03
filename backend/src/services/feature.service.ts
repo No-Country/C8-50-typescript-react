@@ -17,4 +17,19 @@ export class FeatureService extends BaseService<Features> {
       },
     });
   }
+  async findFeatureById(id: string): Promise<Features | null> {
+    return (await this.repository).findOne({
+      where: { id: id },
+      select: { deleteAt: false },
+      withDeleted: false,
+    });
+  }
+  async delteFeature(id: number) {
+    return (await this.repository)
+      .createQueryBuilder()
+      .delete()
+      .from(Features)
+      .where({ id: id })
+      .execute();
+  }
 }

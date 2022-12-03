@@ -10,5 +10,6 @@ export class FeatureRouter extends indexRouter<FeatureController, Auth> {
     this.router.get("/realEstate/feature", (req, res) =>
       this.controller.getfeature(req, res)
     );
+    this.router.delete("/realEstate/feature/:id", (req, res) => this.controller.deleteFeature(req, res));
   }
 }
