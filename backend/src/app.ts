@@ -4,6 +4,7 @@ import cors from 'cors'
 import { UserRouter } from './routes/user.router'
 import { Config } from './config/config'
 import { FeatureRouter } from './routes/feature.router'
+import { TypeRouter } from './routes/type.router'
 
 export class App extends Config{
     
@@ -22,7 +23,7 @@ export class App extends Config{
     }
 
     routes(): Array<express.Router> {
-        return [new UserRouter().router, new FeatureRouter().router]
+        return [new UserRouter().router, new FeatureRouter().router, new TypeRouter().router]
     }
 
 }
