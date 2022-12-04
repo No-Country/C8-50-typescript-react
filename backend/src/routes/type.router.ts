@@ -17,7 +17,7 @@ export class TypeRouter extends indexRouter<TypeController, Auth> {
     this,
       this.router.post(
         "/realEstate/type",
-        (req, res, next) => [this.middleware.isAdmin(req, res, next)],
+        (req, res, next) => [this.middleware.isAdmin(req, res, next)], 
         (req, res) => this.controller.createType(req, res)
       );
   }

@@ -28,6 +28,6 @@ export class TypeService extends BaseService<Type> {
       .execute();
   }
   async createType(body: Type) {
-    return (await this.repository).save(body);
+    return (await this.repository).save(body); 
   }
 }
