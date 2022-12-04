@@ -13,16 +13,31 @@ import { Quantity } from './Quantity.entity';
 export class RealState extends BaseEntity {
 
     @Column()
-    location: string
+    name: string
 
     @Column()
     price: number
 
-    @Column()
+    @Column({ type: "text" })
     description: string
 
+    @Column({ type: "text" })
+    image: string
+
+    @Column()
+    country: string
+
+    @Column()
+    city: string
+
+    @Column()
+    latitude: string
+
+    @Column()
+    longitude: string
+
     @ManyToOne(()=>User, (user)=>user.realstate)
-    @JoinColumn({name: "owner_id"})
+    @JoinColumn({name: "broker_id"})
     user: User
     
     @OneToMany(()=>Visit, (visit)=>visit.realstate)
@@ -44,7 +59,7 @@ export class RealState extends BaseEntity {
     @ManyToOne(()=> Type, (type)=> type.realstate)
     type: Operation
 
-    @ManyToOne(()=> Quantity, (quantity)=> quantity.realstate)
+    @OneToMany(()=> Quantity, (quantity)=> quantity.realstate)
     quantity: Quantity
 
 }
