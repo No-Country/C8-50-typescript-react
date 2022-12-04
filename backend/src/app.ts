@@ -5,6 +5,7 @@ import { UserRouter } from './routes/user.router'
 import { Config } from './config/config'
 import { FeatureRouter } from './routes/feature.router'
 import { TypeRouter } from './routes/type.router'
+import { OperationRouter } from './routes/operation.router'
 
 export class App extends Config{
     
@@ -23,7 +24,7 @@ export class App extends Config{
     }
 
     routes(): Array<express.Router> {
-        return [new UserRouter().router, new FeatureRouter().router, new TypeRouter().router]
+        return [new UserRouter().router, new FeatureRouter().router, new TypeRouter().router, new OperationRouter().router]
     }
 
 }

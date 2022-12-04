@@ -38,4 +38,15 @@ export class TypeController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async createType(req: Request, res: Response) {
+    try {
+      const data = await this.typeService.createType(req.body);
+      if (!data) {
+        return this.httpResponse.Forbidden(res, "No Autorizado");
+      }
+      return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      return this.httpResponse.Error(res, error); 
+    }
+  }
 }

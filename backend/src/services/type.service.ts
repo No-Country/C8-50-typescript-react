@@ -27,4 +27,7 @@ export class TypeService extends BaseService<Type> {
       .where({ id: id })
       .execute();
   }
+  async createType(body: Type) {
+    return (await this.repository).save(body); 
+  }
 }

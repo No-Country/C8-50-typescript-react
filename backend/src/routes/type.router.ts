@@ -14,5 +14,11 @@ export class TypeRouter extends indexRouter<TypeController, Auth> {
     this.router.delete("/realEstate/type/:id", (req, res) =>
       this.controller.deleteTypeById(req, res)
     );
+    this,
+      this.router.post(
+        "/realEstate/type",
+        (req, res, next) => [this.middleware.isAdmin(req, res, next)], 
+        (req, res) => this.controller.createType(req, res)
+      );
   }
 }
