@@ -1,5 +1,5 @@
 import { User } from './User.entity';
-import { RealState } from './RealState.entity';
+import { RealEstate } from './RealEstate.entity';
 import { Entity, Column, ManyToOne, ManyToMany, JoinTable } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 
@@ -15,9 +15,9 @@ export class Visit extends BaseEntity {
     @Column()
     duration: number
 
-    @ManyToOne(()=>RealState, (realstate)=>realstate.visit)
+    @ManyToOne(()=>RealEstate, (realEstate)=>realEstate.visit)
     @JoinTable()
-    realstate: RealState
+    realEstate: RealEstate
 
     @ManyToMany(()=>User, (user)=>user.visit)
     user: User[]

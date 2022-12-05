@@ -1,13 +1,13 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
-import { RealState } from "../entities/RealState.entity";
+import { RealEstate } from "../entities/RealEstate.entity";
 
 export class RealEstateSeeder implements Seeder {
   async run(
     dataSource: DataSource,
     factoryManager: SeederFactoryManager
   ): Promise<void> {
-    const realEstateRepository = dataSource.getRepository(RealState);
+    const realEstateRepository = dataSource.getRepository(RealEstate);
 
     const realEstateData = [
       {
@@ -48,19 +48,19 @@ export class RealEstateSeeder implements Seeder {
     await realEstateRepository.save(newRealEstates);
 
     //Add broker
-    await dataSource.createQueryBuilder().relation(RealState, "user").of(1).set(1);
-    await dataSource.createQueryBuilder().relation(RealState, "user").of(2).set(4);
-    await dataSource.createQueryBuilder().relation(RealState, "user").of(3).set(6);
+    await dataSource.createQueryBuilder().relation(RealEstate, "user").of(1).set(1);
+    await dataSource.createQueryBuilder().relation(RealEstate, "user").of(2).set(4);
+    await dataSource.createQueryBuilder().relation(RealEstate, "user").of(3).set(6);
 
     //Add type
-    await dataSource.createQueryBuilder().relation(RealState, "type").of(1).set(1);
-    await dataSource.createQueryBuilder().relation(RealState, "type").of(2).set(2);
-    await dataSource.createQueryBuilder().relation(RealState, "type").of(3).set(3);
+    await dataSource.createQueryBuilder().relation(RealEstate, "type").of(1).set(1);
+    await dataSource.createQueryBuilder().relation(RealEstate, "type").of(2).set(2);
+    await dataSource.createQueryBuilder().relation(RealEstate, "type").of(3).set(3);
 
     //Add operation type
-    await dataSource.createQueryBuilder().relation(RealState, "operation").of(1).set(1);
-    await dataSource.createQueryBuilder().relation(RealState, "operation").of(2).set(1);
-    await dataSource.createQueryBuilder().relation(RealState, "operation").of(3).set(1);
+    await dataSource.createQueryBuilder().relation(RealEstate, "operation").of(1).set(1);
+    await dataSource.createQueryBuilder().relation(RealEstate, "operation").of(2).set(1);
+    await dataSource.createQueryBuilder().relation(RealEstate, "operation").of(3).set(1);
 
     
   }

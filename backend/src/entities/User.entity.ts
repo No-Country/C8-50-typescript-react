@@ -1,6 +1,6 @@
 import { Comment } from './Comment.entity';
 import { Visit } from './Visit.entity';
-import { RealState } from './RealState.entity';
+import { RealEstate } from './RealEstate.entity';
 import { Entity, Column, OneToMany, ManyToMany, JoinTable, ManyToOne } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
 import { Rol } from './Rol.entity';
@@ -28,8 +28,8 @@ export class User extends BaseEntity {
     @Column()
     img: string
 
-    @OneToMany(()=>RealState, (realstate)=>realstate.user)
-    realstate: RealState[]
+    @OneToMany(()=>RealEstate, (realEstate)=>realEstate.user)
+    realEstate: RealEstate[]
 
     @ManyToMany(()=>Comment, (comment)=>comment.user)
     comment: Comment[]
