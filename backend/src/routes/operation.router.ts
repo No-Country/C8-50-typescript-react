@@ -15,5 +15,10 @@ export class OperationRouter extends indexRouter<OperationController, Auth> {
       (req, res, next) => [this.middleware.isAdmin(req, res, next)],
       (req, res) => this.controller.createOperation(req, res)
     );
+    this.router.delete(
+      "/realEstate/operation/:id",
+      (req, res, next) => [this.middleware.isSuperAdmin(req, res, next)],
+      (req, res) => this.controller.deleteOperationById(req, res)
+    );
   }
 }

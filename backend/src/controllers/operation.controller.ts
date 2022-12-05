@@ -32,4 +32,16 @@ export class OperationController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async deleteOperationById(req: Request, res: Response){
+    const { id} = req.params;
+    try {
+      const data = await this.operationService.FindOperationById(id);
+      if(!data){
+        return this.httpResponse.NotFound(res, "No Se Encontro La Operacion Ha Eliminar")
+      }
+      return this.httpResponse.Ok(res);
+    } catch (error) {
+      
+    }
+  }
 }
