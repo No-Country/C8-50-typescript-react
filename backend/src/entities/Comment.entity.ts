@@ -1,4 +1,4 @@
-import { RealState } from './RealState.entity';
+import { RealEstate } from './RealEstate.entity';
 import { User } from './User.entity';
 import { Entity, Column, ManyToOne, JoinColumn, ManyToMany } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
@@ -15,9 +15,9 @@ export class Comment extends BaseEntity {
     @Column()
     duration : number
 
-    @ManyToOne(()=>RealState, (realstate)=>realstate.comment)
+    @ManyToOne(()=>RealEstate, (realEstate)=>realEstate.comment)
     @JoinColumn({name:"ownership_id"})
-    realstate: RealState
+    realEstate: RealEstate
 
     @ManyToMany(()=>User, (user)=>user.comment)
     @JoinColumn({name:"user_id"})

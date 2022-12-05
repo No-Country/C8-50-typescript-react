@@ -10,7 +10,7 @@ import { Type } from './type.entity';
 import { Quantity } from './Quantity.entity';
 
 @Entity()
-export class RealState extends BaseEntity {
+export class RealEstate extends BaseEntity {
 
     @Column()
     name: string
@@ -36,30 +36,30 @@ export class RealState extends BaseEntity {
     @Column()
     longitude: string
 
-    @ManyToOne(()=>User, (user)=>user.realstate)
+    @ManyToOne(()=>User, (user)=>user.realEstate)
     @JoinColumn({name: "broker_id"})
     user: User
     
-    @OneToMany(()=>Visit, (visit)=>visit.realstate)
+    @OneToMany(()=>Visit, (visit)=>visit.realEstate)
     visit: Visit[]
 
-    @OneToMany(()=>Comment, (commet)=>commet.realstate)
+    @OneToMany(()=>Comment, (commet)=>commet.realEstate)
     comment: Comment[]
 
-    @OneToMany(()=>Call, (call)=>call.realstate)
+    @OneToMany(()=>Call, (call)=>call.realEstate)
     call: Call[]
 
-    @ManyToMany(()=> Wishlist, (wishlistreal)=>wishlistreal.realstate)
+    @ManyToMany(()=> Wishlist, (wishlistreal)=>wishlistreal.realEstate)
     @JoinTable()
     wishlistreal: Wishlist
 
-    @ManyToOne(()=> Operation, (operation)=> operation.realstate)
+    @ManyToOne(()=> Operation, (operation)=> operation.realEstate)
     operation: Operation
 
-    @ManyToOne(()=> Type, (type)=> type.realstate)
+    @ManyToOne(()=> Type, (type)=> type.realEstate)
     type: Operation
 
-    @OneToMany(()=> Quantity, (quantity)=> quantity.realstate)
+    @OneToMany(()=> Quantity, (quantity)=> quantity.realEstate)
     quantity: Quantity
 
 }

@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 import { BaseEntity } from '../config/base.entity';
-import { RealState } from './RealState.entity';
+import { RealEstate } from './RealEstate.entity';
 import { User } from './User.entity';
 
 @Entity()
@@ -15,8 +15,8 @@ export class Call extends BaseEntity{
     @JoinColumn({name:'agente'})
     user: User
 
-    @ManyToOne(()=> RealState, (realstate)=> realstate.call)
+    @ManyToOne(()=> RealEstate, (realEstate)=> realEstate.call)
     @JoinColumn({name:'owner'})
-    realstate: RealState
+    realEstate: RealEstate
 
 }

@@ -42,7 +42,7 @@ export class QuantitySeeder implements Seeder {
     //Add quantities to features
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(1)
       .set(1);
     await dataSource
@@ -53,7 +53,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(2)
       .set(1);
     await dataSource
@@ -64,7 +64,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(3)
       .set(2);
     await dataSource
@@ -75,7 +75,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(4)
       .set(2);
     await dataSource
@@ -86,7 +86,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(5)
       .set(2);
     await dataSource
@@ -97,7 +97,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(6)
       .set(2);
     await dataSource
@@ -108,7 +108,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(7)
       .set(3);
     await dataSource
@@ -119,7 +119,7 @@ export class QuantitySeeder implements Seeder {
 
     await dataSource
       .createQueryBuilder()
-      .relation(Quantity, "realstate")
+      .relation(Quantity, "realEstate")
       .of(8)
       .set(3);
     await dataSource
