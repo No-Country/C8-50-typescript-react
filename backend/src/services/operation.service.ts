@@ -12,4 +12,14 @@ export class OperationService extends BaseService<Operation> {
       order: { title: "ASC" },
     });
   }
+  async CreateOperation(body: Operation) {
+    return (await this.repository).save(body);
+  }
+  async FindOperationById(id: string) {
+    return (await this.repository).findOne({
+      where: { id: id },
+      select: { id: true},
+      withDeleted: false,
+    });
+  }
 }
