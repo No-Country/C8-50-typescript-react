@@ -1,5 +1,4 @@
 import { BaseService } from "./base.service";
-import { Auth } from "../middlewares/auth.middleware";
 import { RealEstate } from "../entities/RealEstate.entity";
 
 export class RealEstateService extends BaseService<RealEstate> {
@@ -22,8 +21,8 @@ export class RealEstateService extends BaseService<RealEstate> {
       },
     });
   }
-  async findRealStateId(id: string){
-    return (await this.repository).findOne({where: {id: id}})
+  async findRealStateId(id: string) {
+    return (await this.repository).findOne({ where: { id: id } });
   }
   async findRealEstateById(id: string): Promise<RealEstate | null> {
     return (await this.repository).findOne({
@@ -39,32 +38,32 @@ export class RealEstateService extends BaseService<RealEstate> {
         latitude: true,
         longitude: true,
         operation: {
-          title: true
+          title: true,
         },
         type: {
-          title: true
+          title: true,
         },
         quantity: {
           quantity: true,
           feature: {
             title: true,
-          }
-        }
+          },
+        },
       },
-      relations: { 
+      relations: {
         user: true,
         operation: true,
         type: true,
         quantity: {
-            feature: true
-          },
-        comment: true,
+          feature: true,
         },
+        comment: true,
+      },
 
       withDeleted: false,
     });
   }
-  async updateRealEstate(id: string, newData : any) {
+  async updateRealEstate(id: string, newData: any) {
     (await this.repository)
       .createQueryBuilder()
       .update(RealEstate)
@@ -79,5 +78,44 @@ export class RealEstateService extends BaseService<RealEstate> {
       .from(RealEstate)
       .where({ id: id })
       .execute();
+  }
+  async createRealEstate(
+    newRealEstate: RealEstate,
+    userId: string,
+    typeId: string,
+    operationId: string
+  ) {
+    try {
+      const realEstate = await (await this.repository).save(newRealEstate);
+      await (await this.repository)
+        .createQueryBuilder()
+        .relation(RealEstate, "user")
+        .of(realEstate.id)
+        .set(userId);
+      await (await this.repository)
+        .createQueryBuilder()
+        .relation(RealEstate, "type")
+        .of(realEstate.id)
+        .set(typeId);
+      await (await this.repository)
+        .createQueryBuilder()
+        .relation(RealEstate, "operation")
+        .of(realEstate.id)
+        .set(operationId);
+      return (await this.repository).findOne({
+        where: { id: realEstate.id },
+        relations: {
+          user: true,
+          operation: true,
+          type: true,
+          quantity: {
+            feature: true,
+          },
+          comment: true,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
   }
 }

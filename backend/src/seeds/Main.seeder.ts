@@ -13,7 +13,6 @@ export class MainSeeder implements Seeder {
     async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<void> {
         await runSeeder(dataSource, RolSeeder)
         await runSeeder(dataSource, UserSeeder)
-        await runSeeder(dataSource, UserSeeder)
         await runSeeder(dataSource, TypeSeeder)
         await runSeeder(dataSource, OperationSeeder)
         await runSeeder(dataSource, FeatureSeeder)

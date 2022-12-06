@@ -67,4 +67,13 @@ export class RealEstateController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async createRealEstate(req: Request, res: Response) {
+    try {
+      const {newRealEstate, userId, typeId, operationId} = req.body
+      const data = await this.realEstateService.createRealEstate(newRealEstate, userId, typeId, operationId);
+      return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }
