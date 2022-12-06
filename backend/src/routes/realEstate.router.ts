@@ -19,6 +19,11 @@ export class RealEstateRouter extends indexRouter<RealEstateController, Auth> {
       (req, res, next) => [this.middleware.isOwnerRealEstate(req, res, next)],
       (req, res) => this.controller.updateRealEstate(req, res)
     );
+    this.router.delete(
+      "/realEstate/:id",
+      (req, res, next) => [this.middleware.isOwnerRealEstate(req, res, next)],
+      (req, res) => this.controller.deleteRealEstate(req, res)
+    );
 
   }
 }

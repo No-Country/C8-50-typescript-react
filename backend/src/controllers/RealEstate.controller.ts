@@ -53,4 +53,18 @@ export class RealEstateController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async deleteRealEstate(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const data = await this.realEstateService.findRealEstateById(id);
+      if (!data) {
+        return this.httpResponse.NotFound(res, "Propiedad no encontrada");
+      }
+      await this.realEstateService.deleteRealEstate(id)
+      return this.httpResponse.Ok(res);
+    } catch (error) {
+      console.error(error);
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }
