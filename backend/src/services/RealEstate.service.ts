@@ -62,4 +62,12 @@ export class RealEstateService extends BaseService<RealEstate> {
       withDeleted: false,
     });
   }
+  async updateRealEstate(id: string, newData : any) {
+    (await this.repository)
+      .createQueryBuilder()
+      .update(RealEstate)
+      .set(newData)
+      .where({ id: id })
+      .execute();
+  }
 }
