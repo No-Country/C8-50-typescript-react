@@ -8,6 +8,7 @@ import { TypeRouter } from "./routes/type.router";
 import { OperationRouter } from "./routes/operation.router";
 import { RealEstateRouter } from "./routes/realEstate.router";
 import { CommentRouter } from "./routes/coment.router";
+import { CallRouter } from "./routes/call.router";
 
 export class App extends Config {
   public app: express.Application = express();
@@ -30,6 +31,7 @@ export class App extends Config {
       new OperationRouter().router,
       new RealEstateRouter().router,
       new CommentRouter().router,
+      new CallRouter().router,
     ];
   }
 }
