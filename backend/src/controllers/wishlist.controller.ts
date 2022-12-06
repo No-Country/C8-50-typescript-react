@@ -21,7 +21,6 @@ export class WishlistController {
       const existRealState = await this.realstateService.findRealStateId(
         body.realEstates
       );
-      console.log(existRealState);
       if (!existRealState) {
         return this.httpResponse.NotFound(res, "Propiedad No Encontrada");
       }
