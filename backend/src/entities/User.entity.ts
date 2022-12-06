@@ -31,7 +31,7 @@ export class User extends BaseEntity {
     @OneToMany(()=>RealEstate, (realEstate)=>realEstate.user)
     realEstate: RealEstate[]
 
-    @ManyToMany(()=>Comment, (comment)=>comment.user)
+    @OneToMany(()=>Comment, (comment)=>comment.user)
     comment: Comment[]
     
     @ManyToMany(()=>Visit, (visit)=>visit.user)
