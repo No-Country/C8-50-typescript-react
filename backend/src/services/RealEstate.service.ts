@@ -22,7 +22,9 @@ export class RealEstateService extends BaseService<RealEstate> {
       },
     });
   }
-
+  async findRealStateId(id: string){
+    return (await this.repository).findOne({where: {id: id}})
+  }
   async findRealEstateById(id: string): Promise<RealEstate | null> {
     return (await this.repository).findOne({
       where: { id: id },
