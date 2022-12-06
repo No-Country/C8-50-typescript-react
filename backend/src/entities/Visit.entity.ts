@@ -1,7 +1,8 @@
 import { User } from './User.entity';
-import { RealEstate } from './RealEstate.entity';
+
 import { Entity, Column, ManyToOne, ManyToMany, JoinTable } from "typeorm"
 import { BaseEntity } from '../config/base.entity'
+import { RealEstate } from './RealEstate.entity';
 
 @Entity()
 export class Visit extends BaseEntity {

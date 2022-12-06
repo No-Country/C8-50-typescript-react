@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 import { RealEstate } from "../entities/RealEstate.entity";
 
+
 export class RealEstateSeeder implements Seeder {
   async run(
     dataSource: DataSource,
