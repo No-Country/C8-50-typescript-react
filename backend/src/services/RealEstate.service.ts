@@ -72,4 +72,12 @@ export class RealEstateService extends BaseService<RealEstate> {
       .where({ id: id })
       .execute();
   }
+  async deleteRealEstate(id: string) {
+    (await this.repository)
+      .createQueryBuilder()
+      .softDelete()
+      .from(RealEstate)
+      .where({ id: id })
+      .execute();
+  }
 }
