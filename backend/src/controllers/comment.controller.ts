@@ -19,7 +19,7 @@ export class CommentController {
         return this.httpResponse.NotFound(res, "Usuario no encontrado");
       }
       const existRealState = await this.realStateSrvice.findRealStateId(
-        body.ownership_id
+        body.realEstate
       );
       if (!existRealState) {
         return this.httpResponse.NotFound(res, "Propiedad No Encontrada");
