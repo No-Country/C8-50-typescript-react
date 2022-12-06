@@ -19,13 +19,14 @@ export class WishlistController {
         return this.httpResponse.NotFound(res, "Usuario No Econtrado");
       }
       const existRealState = await this.realstateService.findRealStateId(
-        body.RealEstate
+        body.realEstates
       );
+      console.log(existRealState);
       if (!existRealState) {
         return this.httpResponse.NotFound(res, "Propiedad No Encontrada");
       }
-      const resu = await this.wishlistService.createWishlist(body);
-      return this.httpResponse.Ok(res, resu);
+      await this.wishlistService.createWishlist(body);
+      return this.httpResponse.Ok(res);
     } catch (error) {}
   }
 }
