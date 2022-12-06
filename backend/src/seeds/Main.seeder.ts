@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { runSeeder, Seeder, SeederFactoryManager } from "typeorm-extension";
+import { CommentSeeder } from "./Comment.seeder";
 import { FeatureSeeder } from "./Feature.seeder";
 import { OperationSeeder } from "./Operation.seeder";
 import { QuantitySeeder } from "./Quantity.seeder";
@@ -18,6 +19,7 @@ export class MainSeeder implements Seeder {
         await runSeeder(dataSource, FeatureSeeder)
         await runSeeder(dataSource, RealEstateSeeder)
         await runSeeder(dataSource, QuantitySeeder)
+        await runSeeder(dataSource, CommentSeeder)
 
     }
 
