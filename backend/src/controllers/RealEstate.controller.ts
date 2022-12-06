@@ -3,7 +3,6 @@ import { HttpResponse } from "../config/HttpResponse";
 import { RealEstateService } from "../services/RealEstate.service";
 
 export class RealEstateController {
-
   constructor(
     private readonly realEstateService: RealEstateService = new RealEstateService(),
     private readonly httpResponse: HttpResponse = new HttpResponse()
@@ -11,17 +10,17 @@ export class RealEstateController {
 
   async getAllRealEstates(req: Request, res: Response) {
     try {
-        const data = await this.realEstateService.getAllRealEstates();
-        if (data.length === 0) {
-          return this.httpResponse.NotFound(
-            res,
-            "No se han encontrado propiedades."
-          );
-        }
-        return this.httpResponse.Ok(res, data);
-      } catch (error) {
-        return this.httpResponse.Error(res, error);
+      const data = await this.realEstateService.getAllRealEstates();
+      if (data.length === 0) {
+        return this.httpResponse.NotFound(
+          res,
+          "No se han encontrado propiedades."
+        );
       }
+      return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      return this.httpResponse.Error(res, error);
+    }
   }
 
   async getRealEstateById(req: Request, res: Response) {
@@ -36,6 +35,22 @@ export class RealEstateController {
       console.error(error);
       return this.httpResponse.Error(res, error);
     }
-  
-}
+  }
+
+  async updateRealEstate(req: Request, res: Response) {
+    const { id } = req.params;
+    const { name, price, image, country, city, latitude, longitude } = req.body;
+    const newData = { name, price, image, country, city, latitude, longitude };
+    try {
+      const data = await this.realEstateService.findRealEstateById(id);
+      if (!data) {
+        return this.httpResponse.NotFound(res, "Propiedad no encontrada");
+      }
+      await this.realEstateService.updateRealEstate(id, newData);
+      return this.httpResponse.Ok(res);
+    } catch (error) {
+      console.error(error);
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }
