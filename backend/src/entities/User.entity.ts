@@ -42,7 +42,7 @@ export class User extends BaseEntity {
     rol: Rol
 
     @OneToMany(()=> Call, (call)=> call.user)
-    call: Call
+    call: Call[]
     @OneToMany(()=> Wishlist, (wishlist)=> wishlist.user)
-    wishlist: Wishlist
+    wishlist: Wishlist[]
 }

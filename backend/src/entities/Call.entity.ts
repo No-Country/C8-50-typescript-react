@@ -12,11 +12,9 @@ export class Call extends BaseEntity{
     description: string
 
     @ManyToOne(()=> User, (user)=> user.call)
-    @JoinColumn({name:'agente'})
     user: User
 
     @ManyToOne(()=> RealEstate, (realEstate)=> realEstate.call)
-    @JoinColumn({name:'owner'})
     realEstate: RealEstate
 
 }
