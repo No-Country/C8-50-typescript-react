@@ -10,11 +10,6 @@ export class WishlistService {
     wish.user = body.user;
     wish.realEstates = [real]
     const data = await PostgresDataSource.manager.save(wish)
-    const loadedPhoto = await PostgresDataSource.getRepository(Wishlist).findOne({
-        where: { id: data.id },
-        relations: { realEstates: true, user: true},
-        withDeleted: false,
-      })
     return data
   }
 }
