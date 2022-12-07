@@ -16,7 +16,7 @@ export class WishlistController {
     try {
       const existUser = await this.userService.findUserById(body.user);
       if (!existUser) {
-        return this.httpResponse.NotFound(res, "Usuario No Econtrado");
+        return this.httpResponse.NotFound(res, "Usuario No Encontrado");
       }
       const existRealState = await this.realstateService.findRealStateId(
         body.realEstates
@@ -28,4 +28,18 @@ export class WishlistController {
       return this.httpResponse.Ok(res);
     } catch (error) {}
   }
+  async deleteWishlist(req: Request, res: Response){
+    const {id} = req.params;
+    try {
+      const existWishlist = await this.wishlistService.findWishlistById(id)
+      if(!existWishlist){
+        return this.httpResponse.NotFound(res, "Wishlist No Encontrada")
+      }
+      await this.wishlistService.deleteWishlistById(id)
+      return this.httpResponse.Ok(res)
+    } catch (error) {
+      return this.httpResponse.Error(res, error)
+    }
+  }
+
 }

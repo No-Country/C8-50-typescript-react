@@ -10,5 +10,8 @@ export class WishlistRouter extends indexRouter<WishlistController, Auth> {
     this.router.post("/realEstate/wishlist", (req, res) =>
       this.controller.createWishlist(req, res)
     );
+    this.router.delete("/realEstate/wishlist/:id", (req, res) =>
+      this.controller.deleteWishlist(req, res)
+    );
   }
 }
