@@ -35,7 +35,10 @@ export class WishlistController {
       if(!existWishlist){
         return this.httpResponse.NotFound(res, "Wishlist No Encontrada")
       }
-      await this.wishlistService.deleteWishlistById(id)
+      const dat = existWishlist.realEstates[0].id
+      console.log(dat, "dat")
+     
+      await this.wishlistService.deleteWishlistById(id, dat )
       return this.httpResponse.Ok(res)
     } catch (error) {
       return this.httpResponse.Error(res, error)

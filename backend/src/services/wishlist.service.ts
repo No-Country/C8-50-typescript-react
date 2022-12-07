@@ -15,15 +15,21 @@ export class WishlistService extends BaseService<Wishlist> {
     const data = await PostgresDataSource.manager.save(wish);
     return data;
   }
-  async deleteWishlistById(id: string) {
-    return (await this.repository)
+  async deleteWishlistById(id: any, reals: any) {
+    console.log(id, "id de service", reals, "id de realstate")
+    const delet = (await this.repository)
       .createQueryBuilder()
-      .delete()
-      .from(Wishlist)
-      .where({ id: id })
-      .execute();
+      .relation(Wishlist, "realEstates")
+      .of(id)
+      .remove(reals);
+      return (await this.repository).delete(id)
   }
-  async findWishlistById(id: string){
-    return (await this.repository).findOne({where: {id: id}, select: {deleteAt: false}, withDeleted: false})
+  async findWishlistById(id: string) {
+    return (await this.repository).findOne({
+      where: { id: id },
+      select: { deleteAt: false },
+      relations: {realEstates: true},
+      withDeleted: false,
+    });
   }
 }
