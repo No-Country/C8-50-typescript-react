@@ -9,6 +9,7 @@ import { OperationRouter } from "./routes/operation.router";
 import { RealEstateRouter } from "./routes/realEstate.router";
 import { CommentRouter } from "./routes/coment.router";
 import { CallRouter } from "./routes/call.router";
+import { WishlistRouter } from "./routes/wishlist.router";
 
 export class App extends Config {
   public app: express.Application = express();
@@ -32,6 +33,7 @@ export class App extends Config {
       new RealEstateRouter().router,
       new CommentRouter().router,
       new CallRouter().router,
+      new WishlistRouter().router,
     ];
   }
 }

@@ -8,7 +8,6 @@ export class Wishlist extends BaseEntity{
 
     @ManyToOne(()=> User, (user)=> user.wishlist)
     user: User
-    @ManyToMany(()=> RealEstate,(realEstate)=> realEstate.wishlistreal)
-    @JoinTable()
-    realEstate: RealEstate
+    @ManyToMany(()=> RealEstate,(realEstate)=> realEstate.wishlis, {cascade: true})
+    realEstates: RealEstate[]
 }

@@ -43,12 +43,6 @@ export class RealEstateService extends BaseService<RealEstate> {
         type: {
           title: true,
         },
-        quantity: {
-          quantity: true,
-          feature: {
-            title: true,
-          },
-        },
       },
       relations: {
         user: true,

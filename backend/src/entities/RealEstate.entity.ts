@@ -49,9 +49,9 @@ export class RealEstate extends BaseEntity {
     @OneToMany(()=>Call, (call)=>call.realEstate)
     call: Call[]
 
-    @ManyToMany(()=> Wishlist, (wishlistreal)=>wishlistreal.realEstate)
+    @ManyToMany(()=> Wishlist, (wishlistreal)=>wishlistreal.realEstates)
     @JoinTable()
-    wishlistreal: Wishlist
+    wishlis: Wishlist[]
 
     @ManyToOne(()=> Operation, (operation)=> operation.realEstate)
     operation: Operation
