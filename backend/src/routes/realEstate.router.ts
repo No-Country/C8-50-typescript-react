@@ -14,6 +14,9 @@ export class RealEstateRouter extends indexRouter<RealEstateController, Auth> {
     this.router.get("/realEstate/:id", (req, res) =>
       this.controller.getRealEstateById(req, res)
     );
+    this.router.get("/realEstate/coment/:id", (req, res) =>
+      this.controller.findComentByIdRealState(req, res)
+    );
     this.router.put(
       "/realEstate/:id",
       (req, res, next) => [this.middleware.isOwnerRealEstate(req, res, next)],

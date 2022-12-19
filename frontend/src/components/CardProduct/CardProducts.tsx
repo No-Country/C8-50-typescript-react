@@ -1,31 +1,30 @@
-import Photo from '../../assets/img/photo-2.jpg';
+
 import {
-	ProductList,
 	ProductCard,
 	Content,
 } from '../../styled-components/styled.cardsProduct';
 import { FaShoppingCart, FaRegBookmark } from 'react-icons/fa';
-function CardProducts(): any {
+import { State } from '../../interface/state';
+import { Link } from 'react-router-dom';
+import { formatoMoney } from '../../hooks/useFormatNumber';
+function CardProducts(state: State): any {
 	return (
-		<ProductList>
 			<ProductCard>
-				<img src={Photo} className='productCard' alt='img-products' />
+				<img src={state.image} className='productCard' alt='img-products' />
 
 				<FaShoppingCart className='shopping' />
 				<FaRegBookmark className='bookmark' />
 				<Content>
-					<h3>Edificio name ubicado en ela zoba de </h3>
+					<h3>{state.description} </h3>
 					<div className='stack-one'>
 						<div>precio</div>
-						<div className='price'>$2135</div>
+						<div className='price'>{formatoMoney(state.price)}</div>
 					</div>
-					<div className='stack-two'>
-						<div className='rating'>rosario</div>
-					</div>
-					<div className='time'>3hs publicado</div>
+					<Link to={`/details/${state.id}`} >Detalles</Link>
+	
 				</Content>
 			</ProductCard>
-		</ProductList>
+		
 	);
 }
 

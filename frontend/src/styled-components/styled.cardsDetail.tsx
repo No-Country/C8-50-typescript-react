@@ -41,9 +41,6 @@ export const ProductCard = styled.div`
 `;
 
 export const Content = styled.div`
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
 	margin: 2rem;
 	h3 {
 		font-size: 1rem;

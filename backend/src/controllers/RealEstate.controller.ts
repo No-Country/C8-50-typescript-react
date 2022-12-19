@@ -76,4 +76,16 @@ export class RealEstateController {
       return this.httpResponse.Error(res, error);
     }
   }
+  async findComentByIdRealState(req: Request, res: Response){
+    const { id } = req.params;
+    try {
+      const data = await this.realEstateService.findComentIntRealstate(id);
+      if(data.length===0){
+        return this.httpResponse.NotFound(res, "No Se Encontraron Comentarios")
+      }
+      return this.httpResponse.Ok(res, data)
+    } catch (error) {
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }

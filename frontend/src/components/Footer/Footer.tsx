@@ -34,7 +34,7 @@ function Footer(): any {
 							<Social to='/'>Inicio</Social>
 						</Paragraph>
 						<Paragraph>
-							<Social to='#'>Propiedades</Social>
+							<Social to='/state'>Propiedades</Social>
 						</Paragraph>
 						<Paragraph>
 							<Social to='#'>About</Social>

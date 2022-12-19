@@ -8,6 +8,8 @@ import Comprar from './pages/Comprar/Comprar';
 import Contacto from './pages/Contacto/Contacto';
 import LoginPage from './pages/Login/Login';
 import { RegisterForm } from './components/Forms/Register';
+import RealstateHome from './pages/State/DetailState';
+import ShowState from './pages/State/ShowState';
 
 function App(): any {
 	return (
@@ -15,6 +17,8 @@ function App(): any {
 			<Navbar />
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path='/state' element={<ShowState/>} />
+				<Route path='/details/:id' element={<RealstateHome/>} />
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/vender' element={<Sell />} />
 				<Route path='/comprar' element={<Comprar />} />

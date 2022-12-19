@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { detailsComentReducer } from './reducer/detailComent'
+import { detailStateReducer } from './reducer/detailState'
 import { stateReducer } from './reducer/stateReducer'
 
 export const store = configureStore({
   reducer: {
-    realstate: stateReducer ,
+    realstate: stateReducer,
+    detailstate: detailStateReducer,
+    comentState: detailsComentReducer
   }
 })
 // Infer the `RootState` and `AppDispatch` types from the store itself

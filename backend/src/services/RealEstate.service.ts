@@ -51,7 +51,9 @@ export class RealEstateService extends BaseService<RealEstate> {
         quantity: {
           feature: true,
         },
-        comment: true,
+        comment: {
+          user: true,
+        },
       },
 
       withDeleted: false,
@@ -111,5 +113,13 @@ export class RealEstateService extends BaseService<RealEstate> {
     } catch (error) {
       return error;
     }
+  }
+  async findComentIntRealstate(id: string) {
+    return (await this.repository).findOne({
+      where: { id: id },
+      select: { comment: true, id: true },
+      relations: { comment: { user: true } },
+      withDeleted: false
+    });
   }
 }

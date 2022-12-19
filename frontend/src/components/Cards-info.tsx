@@ -9,6 +9,7 @@ import {
   CardButton,
   CardImg
 } from "../styled-components/Styled.cardsInfo"
+import { Link } from "react-router-dom"
 
 const CardsInfo = (): any => {
   return (
@@ -17,7 +18,9 @@ const CardsInfo = (): any => {
         <img style={{width: "275px"}} src={propiedadesImgCard} alt="Propiedades-card-img" />
         <CardTitle> Propiedades </CardTitle>
         <CardText>Variedad de propeidades de todos lo tipos, para que encuentes la de tus sueños!!</CardText>
-        <CardButton > Conocer mas </CardButton>
+       
+        <CardButton > <Link to={'/state'}>Conocer mas</Link> </CardButton>
+        
       </PropiedadesCard>
       <PropiedadesCard className="CitasCard" >
         <CardImg src={citasImgCard} alt="Citas-card-img" />

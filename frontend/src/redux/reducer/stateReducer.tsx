@@ -1,8 +1,8 @@
-import { State } from '../../interface/state';
+
 import { GET_STATES } from '../action/actionState';
 
 const initialState = {
-	listaStates: [] as State[],
+	listaStates: [],	
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
