@@ -25,6 +25,6 @@ export function getDetailsState(id: string) {
 export function findComentinRealState(id: string) {
 	return async function (dispatch: any) {
 		const { data } = await axios('http://localhost:3001/api/realEstate/coment/'+id);
-		dispatch({ type: FIND_COMENT_IN_STATES, payload: data})
+		dispatch({ type: FIND_COMENT_IN_STATES, payload: data.data})
 	}
 }

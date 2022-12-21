@@ -80,7 +80,7 @@ export class RealEstateController {
     const { id } = req.params;
     try {
       const data = await this.realEstateService.findComentIntRealstate(id);
-      if(data.length===0){
+      if(!data){
         return this.httpResponse.NotFound(res, "No Se Encontraron Comentarios")
       }
       return this.httpResponse.Ok(res, data)

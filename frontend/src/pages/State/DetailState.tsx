@@ -12,7 +12,9 @@ import {
 import { FaRegBookmark, FaShoppingCart } from 'react-icons/fa';
 import useBoolean from '../../hooks/useBoolean';
 import { formatoMoney } from '../../hooks/useFormatNumber';
-import CardComent from '../../components/CardComent/CardComent';
+import ShowComent from '../../components/CardComent/ShowComent';
+import CreateComent from '../../components/CardComent/CreateComent';
+
 
 function RealstateHome(): any {
 	const { id } = useParams();
@@ -39,6 +41,7 @@ function RealstateHome(): any {
 			{loading ? (
 				'Cargando'
 			) : (
+				<>
 				<ProductList>
 					<ProductCard>
 						<img
@@ -71,9 +74,13 @@ function RealstateHome(): any {
 							</p>
 						</Content>
 					</ProductCard>
-									<CardComent coment={detail.id} />
+					
 
 				</ProductList>
+				<ShowComent id={detail.id} />
+				<CreateComent/>
+				</>
+				
 			)}
 		</>
 	);
